@@ -1,0 +1,5 @@
+{
+  "description": "Prepare the node and install components",
+  "supports_noop": true,
+  "parameters": {}
+}

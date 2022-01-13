@@ -1,0 +1,24 @@
+[Unit]
+Description="HashiCorp Consul"
+Documentation=https://www.consul.io/
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=notify
+User=consul
+Group=consul
+KillMode=process
+KillSignal=SIGINT
+LimitNOFILE=65536
+Restart=always
+StartLimitBurst=3
+TasksMax=infinity
+EnvironmentFile=/hashibox/.env
+ExecReload=/usr/local/bin/consul reload
+ExecStart=/usr/local/bin/consul agent \
+  -config-file=/hashibox/defaults/consul/config/defaults.hcl \
+  -config-file=/hashibox/overrides/consul/config/overrides.hcl
+
+[Install]
+WantedBy=multi-user.target

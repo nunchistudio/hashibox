@@ -1,0 +1,5 @@
+{
+  "description": "Install Nomad on targeted nodes",
+  "supports_noop": true,
+  "parameters": {}
+}

@@ -1,0 +1,19 @@
+titleAndCommits: true
+allowMergeCommits: true
+allowRevertCommits: true
+
+types:
+  - "docs"
+  - "feat"
+  - "fix"
+  - "refactor"
+  - "revert"
+  - "version"
+
+scopes:
+  - "consul"
+  - "vault"
+  - "nomad"
+  - "docker"
+  - "bolt"
+  - "vagrant"

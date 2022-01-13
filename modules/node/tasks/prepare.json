@@ -1,0 +1,6 @@
+{
+  "description": "Install required apt-get packages",
+  "private": true,
+  "supports_noop": true,
+  "parameters": {}
+}

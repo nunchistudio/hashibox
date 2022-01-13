@@ -1,0 +1,24 @@
+[Unit]
+Description="HashiCorp Vault"
+Documentation=https://www.vaultproject.io/
+Requires=network-online.target
+After=network-online.target consul.service
+
+[Service]
+User=vault
+Group=vault
+KillMode=process
+KillSignal=SIGINT
+LimitNOFILE=65536
+LimitMEMLOCK=infinity
+Restart=always
+StartLimitBurst=3
+TasksMax=infinity
+EnvironmentFile=/hashibox/.env
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=/usr/local/bin/vault server \
+  -config=/hashibox/defaults/vault/config/defaults.hcl \
+  -config=/hashibox/overrides/vault/config/overrides.hcl
+
+[Install]
+WantedBy=multi-user.target

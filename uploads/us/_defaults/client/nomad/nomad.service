@@ -1,0 +1,23 @@
+[Unit]
+Description="HashiCorp Nomad"
+Documentation=https://www.nomadproject.io/
+Requires=network-online.target
+After=network-online.target consul.service vault.service
+
+[Service]
+KillMode=process
+KillSignal=SIGINT
+LimitNOFILE=infinity
+LimitNPROC=infinity
+Restart=on-failure
+RestartSec=2
+StartLimitBurst=3
+TasksMax=infinity
+EnvironmentFile=/hashibox/.env
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=/usr/local/bin/nomad agent \
+  -config=/hashibox/defaults/nomad/config/defaults.hcl \
+  -config=/hashibox/overrides/nomad/config/overrides.hcl
+
+[Install]
+WantedBy=multi-user.target
