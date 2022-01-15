@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = "bento/ubuntu-21.04"
   config.vm.hostname = "hashibox"
 
-  # Create 3 nodes acting like servers for Consul, Vault, and Nomad agents, each
+  # Create 3 nodes acting as servers for Consul, Vault, and Nomad agents, each
   # exposing a private network.
   (1..3).each do |i|
     config.vm.define "node-server-#{i}" do |node|
@@ -26,7 +26,7 @@ Vagrant.configure(2) do |config|
     end
   end
 
-  # Create 3 nodes acting like clients for Consul, Vault, and Nomad agents, each
+  # Create 3 nodes acting as clients for Consul, Vault, and Nomad agents, each
   # exposing a private network.
   (1..3).each do |i|
     config.vm.define "node-client-#{i}" do |node|

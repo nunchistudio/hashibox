@@ -36,9 +36,9 @@ If you need your machines to connect to private Git repos, you will most likely
 need to sync SSH keys from your local machine to your boxes.
 
 First, you must ensure that the Nomad user's known hosts file is populated with
-GitHub and Bitbucket hosts, [as described here](https://www.nomadproject.io/docs/job-specification/artifact#download-using-git)
+GitHub and Bitbucket hosts, [as described here](https://www.nomadproject.io/docs/job-specification/artifact#download-using-git).
 
-We provide a shrtcut for that:
+We provide a shortcut for that:
 ```bash
 $ make ssh
 ```

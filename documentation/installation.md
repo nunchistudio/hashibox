@@ -25,12 +25,12 @@ installed in the virtual machines.
 
 ## Running the `Vagrantfile` for the first time
 
-> **TLDR:** You can run all the following steps simply by running:
-  ```bash
-  $ make init
-  ```
-  This will install the virtual machines, initialize the environment, and start
-  the system services.
+**TLDR:** The `make` target `init` creates the virtual machines, initializes the
+environment, and starts the system services automating the process of the following
+section:
+```bash
+$ make init
+```
 
 First, we need to launch the Vagrant environment, without the provision scripts.
 These scripts restart system services manually because Vagrant does not provide
