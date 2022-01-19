@@ -53,4 +53,3 @@ consul {
 acl {
   enabled = false
 }
-
