@@ -1,8 +1,11 @@
 data_dir = "/opt/consul"
 
+ui_config {
+  enabled = true
+}
+
 enable_local_script_checks = true
 
-ui     = true
 server = false
 
 retry_join = [

@@ -1,11 +1,13 @@
 data_dir = "/opt/consul"
 
+ui_config {
+  enabled = true
+}
+
+bootstrap_expect           = 3
 enable_local_script_checks = true
 
-ui     = true
 server = true
-
-bootstrap_expect = 3
 
 retry_join = [
   "192.168.60.10",
