@@ -20,21 +20,6 @@ ports {
   grpc  = 8502
 }
 
-acl {
-  enabled                  = false
-  default_policy           = "allow"
-  enable_token_persistence = true
-}
-
-connect {
-  enabled     = true
-  // ca_provider = "vault"
-
-  // ca_config {
-  //   address = "http://192.168.60.10:8200"
-  //   token   = ""
-
-  //   root_pki_path         = "connect-root"
-  //   intermediate_pki_path = "connect-intermediate"
-  // }
+service {
+  name = "consul-client"
 }
