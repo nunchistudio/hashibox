@@ -43,7 +43,7 @@ plugin "docker" {
 }
 
 consul {
-  server_service_name = "nomad-server"
+  server_service_name = "nomad"
   client_service_name = "nomad-client"
   auto_advertise      = true
   server_auto_join    = true
