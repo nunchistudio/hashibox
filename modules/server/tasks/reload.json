@@ -1,0 +1,6 @@
+{
+  "description": "Reload systemctl",
+  "private": true,
+  "supports_noop": true,
+  "parameters": {}
+}

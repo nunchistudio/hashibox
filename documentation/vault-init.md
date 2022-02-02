@@ -4,8 +4,8 @@ title: Vault initialization
 
 # Vault initialization
 
-Once the Vagrant setup is done, you must configure and unseal Vault in order for
-Nomad to work as expected.
+Once the Vagrant setup is done, you must initialize (and unseal Vault *servers*)
+in order for Nomad to work as expected.
 
 ## Initialize Vault
 
@@ -19,12 +19,12 @@ Copy and paste in your notes the initial root token given as well as the key:
 
 ## Restart the environment
 
-You can now restart the machines with the Vault token given:
+You can now restart the Consul, Nomad, and Vault with the Vault token:
 ```bash
-$ VAULT_TOKEN=<token> make restart
+$ VAULT_TOKEN=<token> make sync
 ```
 
-This will restart every nodes and pass the `VAULT_TOKEN` environment variable
+This will restart the services and pass the `VAULT_TOKEN` environment variable
 down to the Vagrant boxes. This way, it can be used by Consul and Nomad for
 interacting with Vault.
 
@@ -35,17 +35,17 @@ Vault is still not healthy:
 ![Consul Services](../assets/consul-init-02.png)
 
 It is because you need to unseal Vault on every nodes. To achieve this, access
-the Vault UI and unseal Vault on nodes via:
+the Vault UI and unseal Vault on *server* nodes via:
 - <http://192.168.60.10:8200> for `eu-west-1`
 - <http://192.168.60.20:8200> for `eu-west-2`
 - <http://192.168.60.30:8200> for `eu-east-1`
 
 In Consul, we can see that every health checks are now passing and the service list
 looks like this:
-![Consul Services](../assets/consul-init-03.png)
+![Consul Services](../assets/consul-services.png)
 
 Since Vault is heathly, Nomad can interact with it via the root token passed with
 `VAULT_TOKEN`. Let's take a look at Nomad:
 ![Nomad Clients](../assets/nomad-clients.png)
 
-Happy hacking!
+**Happy hacking!**

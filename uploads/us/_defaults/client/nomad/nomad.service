@@ -2,7 +2,7 @@
 Description="HashiCorp Nomad"
 Documentation=https://www.nomadproject.io/
 Requires=network-online.target
-After=network-online.target consul.service vault.service
+After=network-online.target consul.service
 
 [Service]
 KillMode=process

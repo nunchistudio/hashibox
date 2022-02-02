@@ -1,0 +1,5 @@
+{
+  "description": "Prepare the node (server mode) and install components",
+  "supports_noop": true,
+  "parameters": {}
+}

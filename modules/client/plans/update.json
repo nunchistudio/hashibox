@@ -1,0 +1,5 @@
+{
+  "description": "Update the node (client mode) components",
+  "supports_noop": true,
+  "parameters": {}
+}

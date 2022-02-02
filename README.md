@@ -15,10 +15,13 @@ tested against real-life environments as close as possible.
 **Notes:**
 - The Vagrant environment uses a lot of resources. 1Go RAM per *client* nodes
   (x3) and 512Mo RAM per *server* nodes (x3). You should change these resources
-  accordingly to your machine.
-- To simplify the setup, ACL and TLS across Consul, Vault, and Nomad are not
-  configured. As stated, the goal is to test Nomad jobs in a highly available
-  environment. Feel free to make a pull request to support these features.
+  in the `Vagrantfile` accordingly to your machine.
+- To simplify the setup, ACL and TLS across Consul, Nomad, and Vault are not
+  configured. As stated, the primary goal is to test Nomad jobs in a highly
+  available environment. Feel free to make a pull request to support these
+  features.
+- Only Vault *server* is leveraged. Vault agents in *client* mode are not setup
+  since we don't use it. Feel free to make a pull request to support it.
 - We could have leveraged Vagrant's *sync folders* instead of Bolt. Bolt is a
   better choice for better *production-practices*.
 
@@ -31,13 +34,21 @@ tested against real-life environments as close as possible.
 
 ## Screenshots
 
-![Consul Services](./assets/consul-init-03.png)
+### Consul
 
-![Vault with Consul storage](./assets/consul-vault.png)
+![Consul Services](./assets/consul-services.png)
+
+![Consul Nodes](./assets/consul-nodes.png)
+
+![Consul Key/Value](./assets/consul-kv.png)
+
+### Nomad
 
 ![Nomad Servers](./assets/nomad-servers.png)
 
 ![Nomad Clients](./assets/nomad-clients.png)
+
+### Vault
 
 ![Vault Secrets](./assets/vault-secrets.png)
 

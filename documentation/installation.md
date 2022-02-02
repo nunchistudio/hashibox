@@ -19,7 +19,7 @@ $ brew install --cask puppet-bolt
 $ brew install --cask vagrant
 ```
 
-Other tools such as Consul, Vault, Nomad, and Docker are not required on your
+Other tools such as Consul, Nomad, Vault, and Docker are not required on your
 local machine. They are only needed on remote nodes. They will automatically be
 installed in the virtual machines.
 
@@ -75,32 +75,35 @@ $ bolt file upload ./uploads/us/us-east-1/192.168.61.30 /hashibox/overrides --ta
 ```
 
 Since every nodes now have all the configuration files they need, we can run the
-installation plan that will prepare each node, and install Docker, Consul, Vault,
-and Nomad on each and every one. This can take a few minutes depending on your
-machine performance.
+installation plan that will prepare each node. This can take a few minutes depending
+on your machine performance:
 ```bash
-$ bolt plan run node::install --targets=us
+$ bolt plan run server::install --targets=servers
+$ bolt plan run client::install --targets=clients
 ```
+
+It installs and configures:
+- Consul, Nomad, and Vault on *server* nodes.
+- Consul, Nomad, and Docker on *client* nodes.
 
 ## Verify installation
 
-Given the summary table in the introduction, we can add some more information
-with the appropriate links for each node:
+Given the summary table in the introduction, we can add some information with the
+appropriate links for each node:
 
-| Datacenter  | Agent's mode | IP address    | Link to Consul              | Link to Vault               | Link to Nomad               |
+| Datacenter  | Agent's mode | IP address    | Link to Consul              | Link to Nomad               | Link to Vault               |
 |-------------|--------------|---------------|-----------------------------|-----------------------------|-----------------------------|
-| `us-west-1` | server       | 192.168.60.10 | <http://192.168.60.10:8500> | <http://192.168.60.10:8200> | <http://192.168.60.10:4646> |
-| `us-west-1` | client       | 192.168.61.10 | <http://192.168.61.10:8500> | <http://192.168.61.10:8200> | <http://192.168.61.10:4646> |
-| `us-west-2` | server       | 192.168.60.20 | <http://192.168.60.20:8500> | <http://192.168.60.20:8200> | <http://192.168.60.20:4646> |
-| `us-west-2` | client       | 192.168.61.20 | <http://192.168.61.20:8500> | <http://192.168.61.20:8200> | <http://192.168.61.20:4646> |
-| `us-east-1` | server       | 192.168.60.30 | <http://192.168.60.30:8500> | <http://192.168.60.30:8200> | <http://192.168.60.30:4646> |
-| `us-east-1` | client       | 192.168.61.30 | <http://192.168.61.30:8500> | <http://192.168.61.30:8200> | <http://192.168.61.30:4646> |
+| `us-west-1` | *server*     | 192.168.60.10 | <http://192.168.60.10:8500> | <http://192.168.60.10:4646> | <http://192.168.60.10:8200> |
+| `us-west-1` | *client*     | 192.168.61.10 | <http://192.168.61.10:8500> | <http://192.168.61.10:4646> | *n/a*                       |
+| `us-west-2` | *server*     | 192.168.60.20 | <http://192.168.60.20:8500> | <http://192.168.60.20:4646> | <http://192.168.60.20:8200> |
+| `us-west-2` | *client*     | 192.168.61.20 | <http://192.168.61.20:8500> | <http://192.168.61.20:4646> | *n/a*                       |
+| `us-east-1` | *server*     | 192.168.60.30 | <http://192.168.60.30:8500> | <http://192.168.60.30:4646> | <http://192.168.60.30:8200> |
+| `us-east-1` | *client*     | 192.168.61.30 | <http://192.168.61.30:8500> | <http://192.168.61.30:4646> | *n/a*                       |
 
 If we take a look at the Consul UI, this should look like this:
 ![Consul Services](../assets/consul-init-01.png)
 
 Vault is not yet initialized. Therefore, Vault health checks don't pass and Nomad
-can't properly run since it's configured (by default) to integrate with Vault
-for secrets management.
+can't properly run since it's configured to integrate with Vault.
 
 Let's initialize Vault!

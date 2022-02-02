@@ -1,5 +1,7 @@
 .PHONY: up halt restart destroy init sync update ssh
 
+export VAGRANT_EXPERIMENTAL="dependency_provisioners"
+
 #
 # up is a shortcut to start the Vagrant environment.
 #
@@ -29,29 +31,24 @@ destroy: halt
 #
 init:
 	vagrant up --no-provision
-	./scripts/sync.sh
-	bolt plan run node::install --targets=us
+	./scripts/upload.sh
+	./scripts/install.sh
 
 #
 # sync is a shortcut to synchronize the local `upload` directory with the
-# appropriate targeted nodes.
+# appropriate targeted nodes. It also applies some environment variables and
+# then restarts the Consul, Nomad, and Vault services.
 #
 sync:
-	./scripts/sync.sh
-	bolt command run "systemctl start consul vault nomad" --targets=us --run-as root
-
+	./scripts/upload.sh
+	./scripts/dotenv.sh
+	./scripts/restart.sh
 
 #
-# update is a shortcut to update every nodes on every datacenters. We go datacenter
-# by datacenter so at least 2 nodes acting as servers are always up and running.
-#
-# Reminder: The notion of "datacenter" is not the same between Consul and Nomad.
-# https://nomadproject.io/docs/faq/#q-is-nomad-s-datacenter-parameter-the-same-as-consul-s
+# update is a shortcut to update Consul, Nomad, Vault, and Docker on every nodes.
 #
 update:
-	bolt plan run node::update --targets=us-west-1
-	bolt plan run node::update --targets=us-west-2
-	bolt plan run node::update --targets=us-east-1
+	./scripts/update.sh
 
 #
 # ssh is a shortcut to ensure that the Nomad user's known hosts file is

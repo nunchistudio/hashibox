@@ -1,0 +1,5 @@
+{
+  "description": "Update the node (server mode) components",
+  "supports_noop": true,
+  "parameters": {}
+}

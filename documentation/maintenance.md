@@ -18,7 +18,13 @@ will be prompted.
 
 ## Restart the environment
 
-To restart the Vagrant environment, run:
+To synchronize the config files as well as the environment variables, and then
+restart the Consul, Nomad, and Vault services,  run:
+```bash
+$ VAULT_TOKEN=<token> make sync
+```
+
+To completely restart the Vagrant environment, run:
 ```bash
 $ VAULT_TOKEN=<token> make restart
 ```
