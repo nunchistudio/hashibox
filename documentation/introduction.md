@@ -74,3 +74,7 @@ directory structure to better understand how it works:
       the `us-west-2` datacenter only.
     - `us-east-1/`: This directory contains the specific configuration files for
       the `us-east-1` datacenter only.
+
+---
+
+**Next:** [Installation](./installation.md)

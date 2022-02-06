@@ -48,4 +48,6 @@ Since Vault is heathly, Nomad can interact with it via the root token passed wit
 `VAULT_TOKEN`. Let's take a look at Nomad:
 ![Nomad Clients](../assets/nomad-clients.png)
 
+---
+
 **Happy hacking!**

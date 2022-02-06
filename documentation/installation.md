@@ -88,6 +88,11 @@ It installs and configures:
 
 ## Verify installation
 
+Vault is not yet initialized. Therefore, Vault health checks don't pass and Nomad
+can't properly run since it's configured to integrate with Vault. If we take a
+look at the Consul UI, this should look like this:
+![Consul Services](../assets/consul-init-01.png)
+
 Given the summary table in the introduction, we can add some information with the
 appropriate links for each node:
 
@@ -100,10 +105,9 @@ appropriate links for each node:
 | `us-east-1` | *server*     | 192.168.60.30 | <http://192.168.60.30:8500> | <http://192.168.60.30:4646> | <http://192.168.60.30:8200> |
 | `us-east-1` | *client*     | 192.168.61.30 | <http://192.168.61.30:8500> | <http://192.168.61.30:4646> | *n/a*                       |
 
-If we take a look at the Consul UI, this should look like this:
-![Consul Services](../assets/consul-init-01.png)
+As stated, Nomad currently can't properly run. The links related to Nomad will not
+work until Vault is initialized.
 
-Vault is not yet initialized. Therefore, Vault health checks don't pass and Nomad
-can't properly run since it's configured to integrate with Vault.
+---
 
-Let's initialize Vault!
+**Next:** [Vault initialization](./vault-init.md)

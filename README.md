@@ -27,10 +27,13 @@ tested against real-life environments as close as possible.
 
 ## Documentation
 
+**Getting started:**
 01. [Introduction](./documentation/introduction.md)
 02. [Installation](./documentation/installation.md)
 03. [Vault initialization](./documentation/vault-init.md)
-04. [Maintenance](./documentation/maintenance.md)
+
+**Other documents:**
+- [Maintenance](./documentation/maintenance.md)
 
 ## Screenshots
 
