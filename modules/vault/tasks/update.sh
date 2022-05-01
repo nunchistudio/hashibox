@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set Vault version.
-VAULT_VERSION="1.10.0"
+VAULT_VERSION="1.10.2"
 
 # Set OS details.
 OS_KIND="linux"
