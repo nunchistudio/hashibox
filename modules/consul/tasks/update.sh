@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set Consul version.
-CONSUL_VERSION="1.11.5"
+CONSUL_VERSION="1.12.0"
 
 # Set OS details.
 OS_KIND="linux"
