@@ -1,8 +1,8 @@
 # HashiBox
 
 HashiBox is a local environment to simulate a highly-available cloud with
-[Consul](https://www.consul.io/), [Vault](https://www.vaultproject.io/), and
-[Nomad](https://www.nomadproject.io/).
+[Consul](https://www.consul.io/), [Nomad](https://www.nomadproject.io/), and
+[Vault](https://www.vaultproject.io/).
 
 It also installs [Docker](https://www.docker.com/) for running Nomad's jobs
 inside containers. It leverages [Vagrant](https://www.vagrantup.com/) for
@@ -51,9 +51,13 @@ tested against real-life environments as close as possible.
 
 ![Nomad Clients](./assets/nomad-clients.png)
 
+![Nomad Topology](./assets/nomad-topology.png)
+
 ### Vault
 
 ![Vault Secrets](./assets/vault-secrets.png)
+
+![Vault Access](./assets/vault-access.png)
 
 ## License
 
