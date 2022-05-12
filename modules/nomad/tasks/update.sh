@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set Nomad version.
-NOMAD_VERSION="1.2.6"
+NOMAD_VERSION="1.3.0"
 CNI_PLUGINS_VERSION="1.0.1"
 
 # Set OS details.
