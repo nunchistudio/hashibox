@@ -1,6 +1,9 @@
 .PHONY: up halt restart destroy init sync update ssh
 
 export VAGRANT_EXPERIMENTAL="dependency_provisioners"
+VAULT_UNSEAL_KEY ?= "INSERT-VAULT-UNSEAL-KEY"
+UBUNTU_VERSION ?= "20.04"
+VAGRANT_PROVIDER ?= "virtualbox"
 
 #
 # up is a shortcut to start the Vagrant environment.
@@ -59,3 +62,9 @@ ssh:
 	bolt command run "sudo mkdir -p /root/.ssh" --targets=us --run-as root
 	bolt command run "ssh-keyscan github.com | sudo tee -a /root/.ssh/known_hosts" --targets=us --run-as root
 	bolt command run "ssh-keyscan bitbucket.org | sudo tee -a /root/.ssh/known_hosts" --targets=us --run-as root
+
+#
+# unseal is a shortcut to unseal the Vault servers given a single unseal key VAULT_UNSEAL_KEY
+#
+unseal:
+	./scripts/unseal.sh $(VAULT_UNSEAL_KEY)

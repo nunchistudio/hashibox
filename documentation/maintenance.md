@@ -24,6 +24,11 @@ restart the Consul, Nomad, and Vault services,  run:
 $ UBUNTU_VERSION=<version> VAULT_TOKEN=<token> make sync
 ```
 
+To unseal the Vault servers
+```bash
+$ VAULT_UNSEAL_KEY=<vault-unseal-key> make unseal
+```
+
 To completely restart the Vagrant environment, run:
 ```bash
 $ UBUNTU_VERSION=<version> VAULT_TOKEN=<token> make restart

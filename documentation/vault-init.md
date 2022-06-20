@@ -34,11 +34,17 @@ If you access the Consul UI at <http://192.168.60.10:8500>, you will note that
 Vault is still not healthy:
 ![Consul Services](../assets/consul-init-02.png)
 
-It is because you need to unseal Vault on every nodes. To achieve this, access
-the Vault UI and unseal Vault on *server* nodes via:
+It is because you need to unseal Vault on every node. To achieve this, access the Vault UI and unseal Vault on *server* nodes via:
 - <http://192.168.60.10:8200> for `eu-west-1`
 - <http://192.168.60.20:8200> for `eu-west-2`
 - <http://192.168.60.30:8200> for `eu-east-1`
+
+
+After fetching your unseal key and token from one of the Vault servers you can use the `unseal` shortcut to unseal the remainder Vault servers or subsequent unseals
+
+```bash
+$ VAULT_UNSEAL_KEY=<vault-unseal-key> make unseal
+```
 
 In Consul, we can see that every health checks are now passing and the service list
 looks like this:
