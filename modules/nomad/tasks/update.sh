@@ -8,6 +8,9 @@ CNI_PLUGINS_VERSION="1.0.1"
 OS_KIND="linux"
 OS_DISTRO="ubuntu"
 OS_ARCH="amd64"
+case $(uname -m) in
+  aarch64) OS_ARCH="arm64" ;;
+esac
 
 # Download and unzip Nomad.
 echo "==> Downloading Nomad v${NOMAD_VERSION}..."

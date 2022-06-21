@@ -7,6 +7,9 @@ VAULT_VERSION="1.10.3"
 OS_KIND="linux"
 OS_DISTRO="ubuntu"
 OS_ARCH="amd64"
+case $(uname -m) in
+  aarch64) OS_ARCH="arm64" ;;
+esac
 
 # Download and unzip Vault.
 echo "==> Downloading Vault v${VAULT_VERSION}..."

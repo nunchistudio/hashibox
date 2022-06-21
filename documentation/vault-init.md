@@ -21,7 +21,7 @@ Copy and paste in your notes the initial root token given as well as the key:
 
 You can now restart the Consul, Nomad, and Vault with the Vault token:
 ```bash
-$ VAULT_TOKEN=<token> make sync
+$ UBUNTU_VERSION=<version> VAULT_TOKEN=<token> make sync
 ```
 
 This will restart the services and pass the `VAULT_TOKEN` environment variable

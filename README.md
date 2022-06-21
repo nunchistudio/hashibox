@@ -12,7 +12,16 @@ automation across nodes.
 The main goal is to provide a development setup where Nomad jobs can safely be
 tested against real-life environments as close as possible.
 
-**Notes:**
+**Vagrant providers supported:**
+- `parallels`
+- `virtualbox`
+- `vmware_desktop`
+
+**Architectures supported:**
+- `amd64`
+- `arm64`
+
+**Notes about the environment:**
 - The Vagrant environment uses a lot of resources. 1Go RAM per *client* nodes
   (x3) and 512Mo RAM per *server* nodes (x3). You should change these resources
   in the `Vagrantfile` accordingly to your machine.

@@ -23,13 +23,24 @@ Other tools such as Consul, Nomad, Vault, and Docker are not required on your
 local machine. They are only needed on remote nodes. They will automatically be
 installed in the virtual machines.
 
+## Hypervisors and architectures
+
+HashiBox supports multiple architectures and Vagrant providers. Customization can
+be done via environment variables.
+
+Supported environment variables are:
+- `VAGRANT_PROVIDER`: `virtualbox` (default), `vmware_desktop`, `parallels`
+- `UBUNTU_VERSION`: `20.04` (default, for AMD64), `20.04-arm64` (for ARM64)
+
 ## Running the `Vagrantfile` for the first time
 
 **TLDR:** The `make` target `init` creates the virtual machines, initializes the
 environment, and starts the system services automating the process of the following
-section:
+section. It's a shortcut for all following steps in this document. Given the
+environment variables defined above, you can run the Vagrant box within Parallels
+Desktop on macOS with an M1 chip by running:
 ```bash
-$ make init
+$ VAGRANT_PROVIDER=parallels UBUNTU_VERSION=20.04-arm64 make init
 ```
 
 First, we need to launch the Vagrant environment, without the provision scripts.
@@ -37,7 +48,7 @@ These scripts restart system services manually because Vagrant does not provide
 a way for system services to start when Vagrant ups. Since the environment is
 not complete yet, we can not run these scripts.
 ```bash
-$ vagrant up --no-provision
+$ UBUNTU_VERSION=20.04-arm64 vagrant up --provider=parallels --no-provision
 ```
 
 Using the `bolt` command-line, we can create a `/hashibox` directory and an

@@ -6,7 +6,7 @@ export VAGRANT_EXPERIMENTAL="dependency_provisioners"
 # up is a shortcut to start the Vagrant environment.
 #
 up:
-	vagrant up
+	UBUNTU_VERSION=${UBUNTU_VERSION} vagrant up --provider=${VAGRANT_PROVIDER}
 
 #
 # halt is a shortcut to stop the Vagrant environment.
@@ -18,7 +18,7 @@ halt:
 # restart is a shortcut to properly stop and restart the Vagrant environment.
 #
 restart: halt
-	vagrant up
+	UBUNTU_VERSION=${UBUNTU_VERSION} vagrant up --provider=${VAGRANT_PROVIDER}
 
 #
 # destroy is a shortcut to stop and force destroy the Vagrant environment.
@@ -30,7 +30,7 @@ destroy: halt
 # init is a shortcut to initialize the `hashibox` environment for the first time.
 #
 init:
-	vagrant up --no-provision
+	UBUNTU_VERSION=${UBUNTU_VERSION} vagrant up --provider=${VAGRANT_PROVIDER} --no-provision
 	./scripts/upload.sh
 	./scripts/install.sh
 

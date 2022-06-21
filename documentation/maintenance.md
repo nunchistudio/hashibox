@@ -10,7 +10,7 @@ The setup comes with a `Makefile` to make things easier.
 
 To start the Vagrant environment, run:
 ```bash
-$ VAULT_TOKEN=<token> make up
+$ UBUNTU_VERSION=<version> VAULT_TOKEN=<token> make up
 ```
 
 This assumes your environment has already been initialized. Otherwise, an error
@@ -21,12 +21,12 @@ will be prompted.
 To synchronize the config files as well as the environment variables, and then
 restart the Consul, Nomad, and Vault services,  run:
 ```bash
-$ VAULT_TOKEN=<token> make sync
+$ UBUNTU_VERSION=<version> VAULT_TOKEN=<token> make sync
 ```
 
 To completely restart the Vagrant environment, run:
 ```bash
-$ VAULT_TOKEN=<token> make restart
+$ UBUNTU_VERSION=<version> VAULT_TOKEN=<token> make restart
 ```
 
 ## Stop the environment

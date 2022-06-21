@@ -13,6 +13,23 @@ body:
         - Windows
     validations:
       required: true
+  - type: dropdown
+    attributes:
+      label: What architecture are you using?
+      options:
+        - amd64
+        - arm64
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: What Vagrant provider are you using?
+      options:
+        - parallels
+        - virtualbox
+        - vmware_desktop
+    validations:
+      required: true
   - type: textarea
     attributes:
       label: Unexpected behavior

@@ -1,10 +1,15 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+image = "20.04"
+if ENV['UBUNTU_VERSION']
+  image = ENV['UBUNTU_VERSION']
+end
+
 Vagrant.configure(2) do |config|
 
   # Configure the VM options.
-  config.vm.box = "bento/ubuntu-21.04"
+  config.vm.box = "bento/ubuntu-#{image}"
   config.vm.hostname = "hashibox"
 
   # Create 3 nodes acting as servers for Consul, Nomad, and Vault, each exposing
@@ -14,9 +19,14 @@ Vagrant.configure(2) do |config|
       node.vm.hostname = "node-server-#{i}"
       node.vm.network "private_network", ip: "192.168.60.#{i}0"
 
-      node.vm.provider "virtualbox" do |vb|
-        vb.memory = 512
-        vb.cpus = 1
+      node.vm.provider "parallels" do |v|
+        v.memory = 512
+        v.cpus = 1
+      end
+
+      node.vm.provider "virtualbox" do |v|
+        v.memory = 512
+        v.cpus = 1
       end
 
       node.vm.provider "vmware_desktop" do |v|
@@ -38,9 +48,14 @@ Vagrant.configure(2) do |config|
       node.vm.hostname = "node-client-#{i}"
       node.vm.network "private_network", ip: "192.168.61.#{i}0"
 
-      node.vm.provider "virtualbox" do |vb|
-        vb.memory = 1024
-        vb.cpus = 1
+      node.vm.provider "parallels" do |v|
+        v.memory = 1024
+        v.cpus = 1
+      end
+
+      node.vm.provider "virtualbox" do |v|
+        v.memory = 1024
+        v.cpus = 1
       end
 
       node.vm.provider "vmware_desktop" do |v|
@@ -60,7 +75,7 @@ Vagrant.configure(2) do |config|
 
   # Remove the previous environment file and create a new one.
   config.vm.provision "envvar_file", type: "shell", run: "always" do |s|
-    s.inline = "rm /hashibox/.env && touch /hashibox/.env"
+    s.inline = "rm -f /hashibox/.env && touch /hashibox/.env"
   end
 
   # Write the `CONSUL_HTTP_TOKEN` environment variable to the dedicated file on
