@@ -8,12 +8,13 @@ types:
   - "fix"
   - "refactor"
   - "revert"
+  - "sponsors"
   - "version"
 
 scopes:
-  - "consul"
-  - "vault"
-  - "nomad"
-  - "docker"
   - "bolt"
+  - "consul"
+  - "docker"
+  - "nomad"
   - "vagrant"
+  - "vault"
