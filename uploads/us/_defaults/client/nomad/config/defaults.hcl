@@ -24,12 +24,6 @@ telemetry {
   prometheus_metrics         = true
 }
 
-ports {
-  http = 4646
-  rpc  = 4647
-  serf = 4648
-}
-
 plugin "raw_exec" {
   config {
     enabled = true

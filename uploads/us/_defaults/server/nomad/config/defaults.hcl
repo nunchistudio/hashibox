@@ -23,12 +23,6 @@ telemetry {
   prometheus_metrics         = true
 }
 
-ports {
-  http = 4646
-  rpc  = 4647
-  serf = 4648
-}
-
 consul {
   server_service_name = "nomad"
   client_service_name = "nomad-client"
