@@ -18,3 +18,4 @@ scopes:
   - "nomad"
   - "vagrant"
   - "vault"
+  - "waypoint"

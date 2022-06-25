@@ -50,5 +50,9 @@ EOF
 # Add the appropriate Nomad systemd service.
 sudo cp /hashibox/defaults/nomad/nomad.service /etc/systemd/system/nomad.service
 
+# Create the data directory used for Waypoint and Nomad's plugins.
+sudo mkdir -p /opt/waypoint
+sudo mkdir -p /opt/nomad/plugins
+
 # If we made it here, we're done!
 echo "==> Successfully installed Nomad"

@@ -5,16 +5,18 @@ title: Introduction
 # Introduction
 
 HashiBox is a local environment to simulate a highly-available cloud with
-[Consul](https://www.consul.io/), [Vault](https://www.vaultproject.io/), and
-[Nomad](https://www.nomadproject.io/).
+[Consul](https://www.consul.io/), [Nomad](https://www.nomadproject.io/), and
+[Vault](https://www.vaultproject.io/). It also installs
+[Docker](https://www.docker.com/) for running Nomad's jobs inside containers.
 
-It also installs [Docker](https://www.docker.com/) for running Nomad's jobs
-inside containers. It leverages [Vagrant](https://www.vagrantup.com/) for
-virtualization, and [Bolt](https://puppet.com/docs/bolt/) for maintenance
-automation across nodes.
+[Waypoint](https://www.waypointproject.io/) can be added but is optional.
 
-The goal is to provide a development setup where Nomad jobs can safely be tested
-against real-life environments as close as possible.
+It leverages [Vagrant](https://www.vagrantup.com/) for virtualization, and
+[Bolt](https://puppet.com/docs/bolt/) for maintenance automation across nodes.
+
+The main goal is to provide a local environment simulating a [HashiCorp Cloud
+Platform](https://cloud.hashicorp.com) setup as close as possible. This allows
+to test projects from end-to-end before going live.
 
 ## Infrastructure
 

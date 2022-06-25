@@ -52,4 +52,4 @@ Since Vault is heathly, Nomad can interact with it via the root token passed wit
 
 ---
 
-**Happy hacking!**
+**Next:** [Adding Waypoint](./waypoint.md) (optional)

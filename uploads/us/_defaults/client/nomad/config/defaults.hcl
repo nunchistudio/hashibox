@@ -16,6 +16,11 @@ client {
       "192.168.60.30"
     ]
   }
+
+  host_volume "waypoint" {
+    path      = "/opt/waypoint"
+    read_only = false
+  }
 }
 
 telemetry {
