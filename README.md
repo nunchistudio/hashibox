@@ -48,27 +48,47 @@ to test projects from end-to-end before going live.
 
 ## Screenshots
 
-### Consul
+<details>
+  <summary>Consul</summary>
+  <br>
 
-![Consul Services](./assets/consul-services.png)
+  ![Consul Services](./assets/consul-services-02.png)
 
-![Consul Nodes](./assets/consul-nodes.png)
+  ![Consul Nodes](./assets/consul-nodes.png)
 
-![Consul Key/Value](./assets/consul-kv.png)
+  ![Consul Key/Value](./assets/consul-kv.png)
+</details>
 
-### Nomad
+<details>
+  <summary>Nomad</summary>
+  <br>
 
-![Nomad Servers](./assets/nomad-servers.png)
+  ![Nomad Jobs](./assets/nomad-jobs.png)
 
-![Nomad Clients](./assets/nomad-clients.png)
+  ![Nomad Servers](./assets/nomad-servers.png)
 
-![Nomad Topology](./assets/nomad-topology.png)
+  ![Nomad Clients](./assets/nomad-clients-02.png)
 
-### Vault
+  ![Nomad Topology](./assets/nomad-topology.png)
+</details>
 
-![Vault Secrets](./assets/vault-secrets.png)
+<details>
+  <summary>Vault</summary>
+  <br>
 
-![Vault Access](./assets/vault-access.png)
+  ![Vault Secrets](./assets/vault-secrets.png)
+
+  ![Vault Access](./assets/vault-access.png)
+</details>
+
+<details>
+  <summary>Waypoint</summary>
+  <br>
+
+  ![Waypoint Authenticate](./assets/waypoint-auth.png)
+
+  ![Waypoint Projects](./assets/waypoint-projects.png)
+</details>
 
 ## License
 

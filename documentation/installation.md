@@ -56,7 +56,7 @@ it works.
 Vault is not yet initialized. Therefore, Vault health checks don't pass and Nomad
 can't properly run since it's configured to integrate with Vault. If we take a
 look at the Consul UI, this should look like this:
-![Consul Services](../assets/consul-init-01.png)
+![Consul Services](../assets/consul-init.png)
 
 Given the summary table in the introduction, we can add some information with the
 appropriate links for each node:
