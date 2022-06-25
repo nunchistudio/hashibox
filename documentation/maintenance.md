@@ -6,10 +6,8 @@ title: Maintenance
 
 The setup comes with a `Makefile` to make things easier.
 
-We assume the following environment variables are set on your machine:
+We assume the following required environment variables are set on your machine:
 ```bash
-export VAGRANT_PROVIDER=<provider>
-export UBUNTU_VERSION=<version>
 export VAULT_TOKEN=<token>
 export VAULT_UNSEAL_KEY=<key>
 ```

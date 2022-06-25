@@ -24,9 +24,6 @@ to test projects from end-to-end before going live.
 - `arm64`
 
 **Notes about the environment:**
-- The Vagrant environment uses a lot of resources. 1Go RAM per *client* nodes
-  (x3) and 512Mo RAM per *server* nodes (x3). You should change these resources
-  in the `Vagrantfile` accordingly to your machine.
 - To simplify the setup, ACL and TLS across Consul, Nomad, Vault, and Waypoint
   are not configured. Feel free to make a pull request to support it.
 - Only Vault *server* is leveraged. Vault agents in *client* mode are not setup

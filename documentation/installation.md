@@ -31,11 +31,21 @@ Supported environment variables are:
 - `VAGRANT_PROVIDER`: `virtualbox` (default), `vmware_desktop`, `parallels`
 - `UBUNTU_VERSION`: `20.04` (default, for AMD64), `20.04-arm64` (for ARM64)
 
+The Vagrant environment uses a lot of resources. By default it uses 1Go RAM per
+*client* nodes (x3) and 512Mo RAM per *server* nodes (x3). You should change
+these resources via the following environment variables:
+- `VAGRANT_CLIENT_RAM`: Default is `1024`
+- `VAGRANT_CLIENT_CPUS`: Default is `1`
+- `VAGRANT_SERVER_RAM`: Default is `512`
+- `VAGRANT_SERVER_CPUS`: Default is `1`
+
 We now assume you run all commands with these environment variables exported,
 like this for example:
 ```bash
 export VAGRANT_PROVIDER=parallels
 export UBUNTU_VERSION=20.04-arm64
+export VAGRANT_CLIENT_RAM=2048
+export VAGRANT_SERVER_RAM=1024
 ```
 
 ## Running the `Vagrantfile` for the first time
