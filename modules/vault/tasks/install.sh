@@ -28,8 +28,8 @@ complete -C /usr/local/bin/vault vault
 # Create a unique, non-privileged system user to run Vault and create its data
 # directory.
 sudo useradd --system --shell /bin/false vault
-sudo mkdir --parents /opt/vault
-sudo chown --recursive vault:vault /opt/vault
+sudo mkdir -p /opt/vault
+sudo chown -R vault:vault /opt/vault
 
 # Add the appropriate Vault systemd service.
 sudo cp /hashibox/defaults/vault/vault.service /etc/systemd/system/vault.service

@@ -37,8 +37,8 @@ complete -C /usr/local/bin/nomad nomad
 # Create a unique, non-privileged system user to run Nomad and create its data
 # directory.
 sudo useradd --system --shell /bin/false nomad
-sudo mkdir --parents /opt/nomad
-sudo chown --recursive nomad:nomad /opt/nomad
+sudo mkdir -p /opt/nomad
+sudo chown -R nomad:nomad /opt/nomad
 
 # Write a file to preserve network settings.
 cat > /etc/sysctl.d/20-bridge << EOF

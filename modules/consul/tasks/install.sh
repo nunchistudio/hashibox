@@ -28,8 +28,8 @@ complete -C /usr/local/bin/consul consul
 # Create a unique, non-privileged system user to run Consul and create its data
 # directory.
 sudo useradd --system --shell /bin/false consul
-sudo mkdir --parents /opt/consul
-sudo chown --recursive consul:consul /opt/consul
+sudo mkdir -p /opt/consul
+sudo chown -R consul:consul /opt/consul
 
 # Add the appropriate Consul systemd service.
 sudo cp /hashibox/defaults/consul/consul.service /etc/systemd/system/consul.service

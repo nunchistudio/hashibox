@@ -1,15 +1,16 @@
-.PHONY: up halt restart destroy init sync update ssh
+.PHONY: up halt restart destroy init sync update unseal ssh
 
-export VAGRANT_EXPERIMENTAL="dependency_provisioners"
-VAULT_UNSEAL_KEY ?= "INSERT-VAULT-UNSEAL-KEY"
-UBUNTU_VERSION ?= "20.04"
+export VAGRANT_EXPERIMENTAL = "dependency_provisioners"
+
 VAGRANT_PROVIDER ?= "virtualbox"
+UBUNTU_VERSION ?= "20.04"
+VAULT_UNSEAL_KEY ?= "INSERT-VAULT-UNSEAL-KEY"
 
 #
 # up is a shortcut to start the Vagrant environment.
 #
 up:
-	UBUNTU_VERSION=${UBUNTU_VERSION} vagrant up --provider=${VAGRANT_PROVIDER}
+	vagrant up --provider=${VAGRANT_PROVIDER}
 
 #
 # halt is a shortcut to stop the Vagrant environment.
@@ -19,9 +20,12 @@ halt:
 
 #
 # restart is a shortcut to properly stop and restart the Vagrant environment.
+# It also unseal Vault on every server nodes.
 #
 restart: halt
-	UBUNTU_VERSION=${UBUNTU_VERSION} vagrant up --provider=${VAGRANT_PROVIDER}
+	vagrant up --provider=${VAGRANT_PROVIDER}
+	sleep 5
+	./scripts/unseal.sh
 
 #
 # destroy is a shortcut to stop and force destroy the Vagrant environment.
@@ -30,28 +34,40 @@ destroy: halt
 	vagrant destroy -f
 
 #
-# init is a shortcut to initialize the `hashibox` environment for the first time.
+# init is a shortcut to initialize the HashiBox environment for the first time.
 #
 init:
-	UBUNTU_VERSION=${UBUNTU_VERSION} vagrant up --provider=${VAGRANT_PROVIDER} --no-provision
+	vagrant up --provider=${VAGRANT_PROVIDER} --no-provision
 	./scripts/upload.sh
 	./scripts/install.sh
 
 #
 # sync is a shortcut to synchronize the local `upload` directory with the
-# appropriate targeted nodes. It also applies some environment variables and
-# then restarts the Consul, Nomad, and Vault services.
+# appropriate targeted nodes. It also applies some environment variables, then
+# restarts the Consul, Nomad, and Vault services and finally unseal Vault on
+# every server nodes.
 #
 sync:
 	./scripts/upload.sh
 	./scripts/dotenv.sh
 	./scripts/restart.sh
+	sleep 5
+	./scripts/unseal.sh
 
 #
 # update is a shortcut to update Consul, Nomad, Vault, and Docker on every nodes.
+# It also unseal Vault on every server nodes.
 #
 update:
 	./scripts/update.sh
+	sleep 5
+	./scripts/unseal.sh
+
+#
+# unseal is a shortcut to unseal the Vault servers given a single unseal key.
+#
+unseal:
+	./scripts/unseal.sh
 
 #
 # ssh is a shortcut to ensure that the Nomad user's known hosts file is
@@ -63,8 +79,3 @@ ssh:
 	bolt command run "ssh-keyscan github.com | sudo tee -a /root/.ssh/known_hosts" --targets=us --run-as root
 	bolt command run "ssh-keyscan bitbucket.org | sudo tee -a /root/.ssh/known_hosts" --targets=us --run-as root
 
-#
-# unseal is a shortcut to unseal the Vault servers given a single unseal key VAULT_UNSEAL_KEY
-#
-unseal:
-	./scripts/unseal.sh $(VAULT_UNSEAL_KEY)

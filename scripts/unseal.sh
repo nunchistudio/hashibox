@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -euo pipefail
 
 unseal_key="$1"

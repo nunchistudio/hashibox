@@ -21,7 +21,8 @@ Copy and paste in your notes the initial root token given as well as the key:
 
 You can now restart the Consul, Nomad, and Vault with the Vault token:
 ```bash
-$ UBUNTU_VERSION=<version> VAULT_TOKEN=<token> make sync
+$ export VAULT_TOKEN=<token>
+$ make sync
 ```
 
 This will restart the services and pass the `VAULT_TOKEN` environment variable
@@ -34,9 +35,11 @@ If you access the Consul UI at <http://192.168.60.10:8500>, you will note that
 Vault is still not healthy:
 ![Consul Services](../assets/consul-init-02.png)
 
-It is because you need to unseal Vault on every node. To achieve this, you can use the `make unseal` command as follows:
+It is because you need to unseal Vault on every node. To achieve this, you can
+use the `make unseal` command as follow:
 ```bash
-$ VAULT_UNSEAL_KEY=<vault-unseal-key> make unseal
+$ export VAULT_UNSEAL_KEY=<key>
+$ make unseal
 ```
 
 In Consul, we can see that every health checks are now passing and the service list
