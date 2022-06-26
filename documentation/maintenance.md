@@ -6,7 +6,8 @@ title: Maintenance
 
 The setup comes with a `Makefile` to make things easier.
 
-We assume the following required environment variables are set on your machine:
+We assume the following required environment variables are set on your machine
+or via a file `.env` at the top-level directory of HashiBox:
 ```bash
 export VAULT_TOKEN=<token>
 export VAULT_UNSEAL_KEY=<key>

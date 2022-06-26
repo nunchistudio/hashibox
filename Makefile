@@ -1,21 +1,36 @@
 .PHONY: up halt restart destroy init sync update unseal ssh
 
-export VAGRANT_EXPERIMENTAL = "dependency_provisioners"
+export VAGRANT_PROVIDER ?= "virtualbox"
+export UBUNTU_VERSION ?= 20.04
 
-VAGRANT_PROVIDER ?= "virtualbox"
-VAGRANT_CLIENT_RAM ?= "1024"
-VAGRANT_CLIENT_CPUS ?= "1"
-VAGRANT_SERVER_RAM ?= "512"
-VAGRANT_SERVER_CPUS ?= "1"
-UBUNTU_VERSION ?= "20.04"
+export VAGRANT_CLIENT_RAM ?= 1024
+export VAGRANT_CLIENT_CPUS ?= 1
+export VAGRANT_SERVER_RAM ?= 512
+export VAGRANT_SERVER_CPUS ?= 1
 
-VAULT_UNSEAL_KEY ?= "INSERT-VAULT-UNSEAL-KEY"
+export VAULT_UNSEAL_KEY ?= "INSERT-VAULT-UNSEAL-KEY"
+
+include .env
 
 #
-# up is a shortcut to start the Vagrant environment.
+# init is a shortcut to initialize the HashiBox environment for the first time.
+#
+init:
+	vagrant up --provider=${VAGRANT_PROVIDER}
+	./scripts/upload.sh
+	./scripts/install.sh
+
+#
+# up is a shortcut to start the Vagrant environment. It also applies some
+# environment variables, then restarts the Consul, Nomad, and Vault services and
+# finally unseal Vault on every server nodes.
 #
 up:
 	vagrant up --provider=${VAGRANT_PROVIDER}
+	./scripts/dotenv.sh
+	./scripts/restart.sh
+	sleep 5
+	./scripts/unseal.sh
 
 #
 # halt is a shortcut to stop the Vagrant environment.
@@ -25,12 +40,8 @@ halt:
 
 #
 # restart is a shortcut to properly stop and restart the Vagrant environment.
-# It also unseal Vault on every server nodes.
 #
-restart: halt
-	vagrant up --provider=${VAGRANT_PROVIDER}
-	sleep 5
-	./scripts/unseal.sh
+restart: halt up
 
 #
 # destroy is a shortcut to stop and force destroy the Vagrant environment.
@@ -39,15 +50,7 @@ destroy: halt
 	vagrant destroy -f
 
 #
-# init is a shortcut to initialize the HashiBox environment for the first time.
-#
-init:
-	vagrant up --provider=${VAGRANT_PROVIDER} --no-provision
-	./scripts/upload.sh
-	./scripts/install.sh
-
-#
-# sync is a shortcut to synchronize the local `upload` directory with the
+# sync is a shortcut to synchronize the local `uploads` directory with the
 # appropriate targeted nodes. It also applies some environment variables, then
 # restarts the Consul, Nomad, and Vault services and finally unseal Vault on
 # every server nodes.

@@ -28,10 +28,6 @@ Vagrant.configure(2) do |config|
         v.vmx["memsize"] = "#{ENV['VAGRANT_SERVER_RAM']}"
         v.vmx["numvcpus"] = "#{ENV['VAGRANT_SERVER_CPUS']}"
       end
-
-      node.vm.provision "start_servers", type: "shell", after: :all, run: "always" do |s|
-        s.inline = "systemctl restart consul nomad vault"
-      end
     end
   end
 
@@ -57,43 +53,6 @@ Vagrant.configure(2) do |config|
         v.vmx["memsize"] = "#{ENV['VAGRANT_CLIENT_RAM']}"
         v.vmx["numvcpus"] = "#{ENV['VAGRANT_CLIENT_CPUS']}"
       end
-
-      node.vm.provision "start_docker", type: "shell", run: "always" do |s|
-        s.inline = "service docker restart"
-      end
-
-      node.vm.provision "start_clients", type: "shell", after: :all, run: "always" do |s|
-        s.inline = "systemctl restart consul nomad"
-      end
     end
-  end
-
-  # Remove the previous environment file and create a new one.
-  config.vm.provision "envvar_file", type: "shell", run: "always" do |s|
-    s.inline = "rm -f /hashibox/.env && touch /hashibox/.env"
-  end
-
-  # Write the `CONSUL_HTTP_TOKEN` environment variable to the dedicated file on
-  # the virtual machine.
-  config.vm.provision "envvar_token_consul", type: "shell", after: "envvar_file", run: "always" do |s|
-    s.inline = "echo CONSUL_HTTP_TOKEN=#{ENV['CONSUL_HTTP_TOKEN']} | tee -a /hashibox/.env"
-  end
-
-  # Write the `NOMAD_TOKEN` environment variable to the dedicated file on the
-  # virtual machine.
-  config.vm.provision "envvar_token_nomad", type: "shell", after: "envvar_file", run: "always" do |s|
-    s.inline = "echo NOMAD_TOKEN=#{ENV['NOMAD_TOKEN']} | tee -a /hashibox/.env"
-  end
-
-  # Write the `VAULT_TOKEN` environment variable to the dedicated file on the
-  # virtual machine.
-  config.vm.provision "envvar_token_vault", type: "shell", after: "envvar_file", run: "always" do |s|
-    s.inline = "echo VAULT_TOKEN=#{ENV['VAULT_TOKEN']} | tee -a /hashibox/.env"
-  end
-
-  # We need to manually restart `systemctl` since Vagrant does not provide a
-  # proper way for system services to start when Vagrant ups.
-  config.vm.provision "start_systemctl", type: "shell", run: "always" do |s|
-    s.inline = "systemctl daemon-reload"
   end
 end
