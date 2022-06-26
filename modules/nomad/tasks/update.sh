@@ -1,8 +1,16 @@
 #!/bin/bash
 
+# Read the content of the environment file, which is populated with the
+# `NOMAD_LICENSE`. If a license key is present, Nomad Enterprise will be
+# downloaded instead of Nomad OSS.
+source /hashibox/.env
+
 # Set Nomad version.
-NOMAD_VERSION="1.3.0"
 CNI_PLUGINS_VERSION="1.0.1"
+NOMAD_VERSION="1.3.0"
+if [[ ! -z ${NOMAD_LICENSE} ]]; then
+  NOMAD_VERSION+="+ent"
+fi
 
 # Set OS details.
 OS_KIND="linux"

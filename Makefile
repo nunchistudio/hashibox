@@ -14,10 +14,13 @@ include .env
 
 #
 # init is a shortcut to initialize the HashiBox environment for the first time.
+# Apply the environment variables before installing so we know if we need OSS
+# or Enterprise version for Consul, Nomad, and Vault.
 #
 init:
 	vagrant up --provider=${VAGRANT_PROVIDER}
 	./scripts/upload.sh
+	./scripts/dotenv.sh
 	./scripts/install.sh
 
 #

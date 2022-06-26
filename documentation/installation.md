@@ -22,37 +22,55 @@ Other tools such as Consul, Nomad, Vault, and Docker are not required on your
 local machine. They are only needed on remote nodes. They will automatically be
 installed and configured in the virtual machines.
 
-## Hypervisors and architectures
+## Environment variables
 
-HashiBox supports multiple architectures and Vagrant providers. Customization can
-be done via environment variables.
+Tweaking HashiBox can be done via environment variables.
 
-Supported environment variables are:
-- `VAGRANT_PROVIDER`: `virtualbox` (default), `vmware_desktop`, `parallels`
-- `UBUNTU_VERSION`: `20.04` (default, for AMD64), `20.04-arm64` (for ARM64)
-
-The Vagrant environment uses a lot of resources. By default it uses 1Go RAM per
-*client* nodes (x3) and 512Mo RAM per *server* nodes (x3). You can change these
-resources via the following environment variables:
-- `VAGRANT_CLIENT_RAM`: Default is `1024`
-- `VAGRANT_CLIENT_CPUS`: Default is `1`
-- `VAGRANT_SERVER_RAM`: Default is `512`
-- `VAGRANT_SERVER_CPUS`: Default is `1`
-
-We now assume you run all commands with the desired environment variables
-exported.
-
-This variables can be saved in a `.env` file at the top-level directory of
+These variables can be saved in a `.env` file at the top-level directory of
 HashiBox. They will automatically be acknowledged by the `Makefile`. Make sure
-to `export` each of them:
+to `export` each of them.
+
+Example:
 ```bash
 export VAGRANT_PROVIDER=parallels
 export UBUNTU_VERSION=20.04-arm64
 export VAGRANT_CLIENT_RAM=2048
 export VAGRANT_SERVER_RAM=1024
+export NOMAD_LICENSE=licensekey
 ```
 
+### Hypervisors and architectures
+
+HashiBox supports multiple architectures and Vagrant providers.
+
+Supported environment variables are:
+- `VAGRANT_PROVIDER`: Set the Vagrant provider. Supports `virtualbox`,
+  `vmware_desktop`, `parallels`. Default is `virtualbox`.
+- `UBUNTU_VERSION`: Set the Ubuntu version. Supports `20.04` (for AMD64),
+  `20.04-arm64` (for ARM64). Default is `20.04`.
+
+The Vagrant environment uses a lot of resources. By default it uses 1Go RAM per
+*client* nodes (x3) and 512Mo RAM per *server* nodes (x3). You can change these
+resources via the following environment variables:
+- `VAGRANT_CLIENT_RAM`: Set the RAM for *client* nodes. Default is `1024`.
+- `VAGRANT_CLIENT_CPUS`: Set the CPUs for *client* nodes. Default is `1`.
+- `VAGRANT_SERVER_RAM`: Set the RAM for *server* nodes. Default is `512`.
+- `VAGRANT_SERVER_CPUS`: Set the CPUs for *server* nodes. Default is `1`.
+
+### Enterprise licenses
+
+Consul, Nomad, and Vault Enterprise are supported as well:
+- `CONSUL_LICENSE`: Set the Consul Enterprise license key. If set, Consul
+  Enterprise will be downloaded instead of Consul OSS.
+- `NOMAD_LICENSE`: Set the Nomad Enterprise license key. If set, Nomad Enterprise
+  will be downloaded instead of Nomad OSS.
+- `VAULT_LICENSE`: Set the Vault Enterprise license key. If set, Vault Enterprise
+  will be downloaded instead of Vault OSS.
+
 ## Running the `Vagrantfile` for the first time
+
+We now assume you run all commands with the desired environment variables
+exported.
 
 The `init` entry of the `Makefile` creates the virtual machines, initializes the
 environment, and starts the services, automating the whole process. You can run
