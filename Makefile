@@ -10,7 +10,7 @@ export VAGRANT_SERVER_CPUS ?= 1
 
 export VAULT_UNSEAL_KEY ?= "INSERT-VAULT-UNSEAL-KEY"
 
-include .env
+-include .env
 
 #
 # init is a shortcut to initialize the HashiBox environment for the first time.
