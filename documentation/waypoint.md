@@ -10,8 +10,8 @@ consistent abstraction of underlying infrastructure.
 
 ## Prerequisites
 
-Before continuing, you first need to [install Waypoint on your
-machine](https://learn.hashicorp.com/tutorials/waypoint/get-started-install).
+To interact with a Waypoint server and runners, you first need to [install Waypoint
+on your machine](https://learn.hashicorp.com/tutorials/waypoint/get-started-install).
 
 **TLDR:** For macOS with [Homebrew](https://brew.sh/):
 ```bash
@@ -24,7 +24,8 @@ Since we already have a running Nomad cluster, adding Waypoint to HashiBox is
 pretty straightforward.
 
 By running the following command, you install a Waypoint *server* and *runner*
-on the Nomad client in the `us-west-1` datacenter:
+on the Nomad client in the `us-west-1` datacenter, and also register Waypoint
+services in Consul:
 ```bash
 $ export NOMAD_ADDR=http://192.168.60.10:4646
 $ waypoint install -accept-tos -platform=nomad \
@@ -32,6 +33,7 @@ $ waypoint install -accept-tos -platform=nomad \
   -nomad-region=us \
   -nomad-dc=us-west-1 \
   -nomad-consul-service=true \
+  -nomad-consul-service-hostname=192.168.61.10 \
   -nomad-consul-datacenter=us \
   -nomad-host-volume=waypoint
 ```
