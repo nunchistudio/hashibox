@@ -39,6 +39,12 @@ sudo useradd --system --shell /bin/false consul
 sudo mkdir -p /opt/consul
 sudo chown -R consul:consul /opt/consul
 
+# Forward default DNS port 53 to Consul 8600.
+iptables -t nat -A PREROUTING -p udp -m udp --dport 53 -j REDIRECT --to-ports 8600
+iptables -t nat -A PREROUTING -p tcp -m tcp --dport 53 -j REDIRECT --to-ports 8600
+iptables -t nat -A OUTPUT -d localhost -p udp -m udp --dport 53 -j REDIRECT --to-ports 8600
+iptables -t nat -A OUTPUT -d localhost -p tcp -m tcp --dport 53 -j REDIRECT --to-ports 8600
+
 # Add the appropriate Consul systemd service.
 sudo cp /hashibox/defaults/consul/consul.service /etc/systemd/system/consul.service
 
