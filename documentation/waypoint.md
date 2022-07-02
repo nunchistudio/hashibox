@@ -42,7 +42,3 @@ No need to manually create the Nomad host volume `waypoint`. It has already been
 created by Nomad clients via the configuration files.
 
 Once done, the Waypoint UI is available at <https://192.168.61.10:9702>.
-
----
-
-**Happy hacking!**

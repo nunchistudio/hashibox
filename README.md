@@ -41,10 +41,10 @@ to test projects from end-to-end before going live.
 01. [Introduction](./documentation/introduction.md)
 02. [Installation](./documentation/installation.md)
 03. [Vault initialization](./documentation/vault-init.md)
-04. [Adding Waypoint](./documentation/waypoint.md) (optional)
 
 **Other documents:**
-- [Maintenance](./documentation/maintenance.md)
+- [Adding Waypoint](./documentation/waypoint.md)
+- [Maintenance cheatsheet](./documentation/maintenance.md)
 
 ## Screenshots
 
