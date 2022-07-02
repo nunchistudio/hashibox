@@ -1,4 +1,4 @@
-.PHONY: up halt restart destroy init sync update unseal ssh
+.PHONY: init up halt restart destroy sync update unseal ssh
 
 export VAGRANT_PROVIDER ?= "virtualbox"
 export UBUNTU_VERSION ?= 20.04
@@ -18,7 +18,7 @@ export VAULT_UNSEAL_KEY ?= "INSERT-VAULT-UNSEAL-KEY"
 # or Enterprise version for Consul, Nomad, and Vault.
 #
 init:
-	vagrant up --provider=${VAGRANT_PROVIDER}
+	vagrant up --provider=${VAGRANT_PROVIDER} --parallel
 	./scripts/upload.sh
 	./scripts/dotenv.sh
 	./scripts/install.sh
@@ -29,7 +29,7 @@ init:
 # finally unseal Vault on every server nodes.
 #
 up:
-	vagrant up --provider=${VAGRANT_PROVIDER}
+	vagrant up --provider=${VAGRANT_PROVIDER} --parallel
 	./scripts/dotenv.sh
 	./scripts/restart.sh
 	sleep 5
@@ -89,4 +89,3 @@ ssh:
 	bolt command run "sudo mkdir -p /root/.ssh" --targets=us --run-as root
 	bolt command run "ssh-keyscan github.com | sudo tee -a /root/.ssh/known_hosts" --targets=us --run-as root
 	bolt command run "ssh-keyscan bitbucket.org | sudo tee -a /root/.ssh/known_hosts" --targets=us --run-as root
-
