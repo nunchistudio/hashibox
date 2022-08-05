@@ -1,8 +1,9 @@
 ---
-title: Adding Waypoint
+location: "/documentation/waypoint.md"
+title: "Adding Waypoint"
 ---
 
-# Adding Waypoint
+# {% $markdoc.frontmatter.title %}
 
 In some cases, you may want to use [Waypoint](https://www.waypointproject.io/),
 allowing developers to deploy, manage, and observe their applications through a
@@ -14,6 +15,7 @@ To interact with a Waypoint server and runners, you first need to [install Waypo
 on your machine](https://learn.hashicorp.com/tutorials/waypoint/get-started-install).
 
 **TLDR:** For macOS with [Homebrew](https://brew.sh/):
+
 ```bash
 $ brew install hashicorp/tap/waypoint
 ```
@@ -26,6 +28,7 @@ pretty straightforward.
 By running the following command, you install a Waypoint *server* and *runner*
 on the Nomad client in the `us-west-1` datacenter, and also register Waypoint
 services in Consul:
+
 ```bash
 $ export NOMAD_ADDR=http://192.168.60.10:4646
 $ waypoint install -accept-tos -platform=nomad \

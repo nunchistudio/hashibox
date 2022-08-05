@@ -1,25 +1,24 @@
 ---
-title: Introduction
+location: "/documentation/overview.md"
+title: "Overview"
 ---
 
-# Introduction
+# {% $markdoc.frontmatter.title %}
 
 HashiBox is a local environment to simulate a highly-available cloud with
 [Consul](https://www.consul.io/), [Nomad](https://www.nomadproject.io/), and
 [Vault](https://www.vaultproject.io/). OSS and Enterprise versions of each
 product are supported.
 
-[Waypoint](https://www.waypointproject.io/) can be added but is optional.
-
-It also installs [Docker](https://www.docker.com/) for running Nomad's jobs
-inside containers.
+[Waypoint](https://www.waypointproject.io/) can be added but is optional. It also
+installs [Docker](https://www.docker.com/) for running Nomad's jobs inside
+containers.
 
 It leverages [Vagrant](https://www.vagrantup.com/) for virtualization, and
 [Bolt](https://puppet.com/docs/bolt/) for maintenance automation across nodes.
 
-The main goal is to provide a local environment simulating a [HashiCorp Cloud
-Platform](https://cloud.hashicorp.com) setup as close as possible. This allows
-to test projects from end-to-end before going live.
+The main goal of HashiBox is to provide a local setup respecting environment
+parity for simulating a Cloud Platform from end-to-end before going in production.
 
 ## Infrastructure
 
@@ -34,21 +33,14 @@ In each datacenter we install 2 nodes:
 - One acting as a *client* for Consul and Nomad with IP address 192.168.61.x.
   Docker is also installed for running Nomad jobs inside containers.
 
-Here is a summary table of the infrastructure setup using the default `Vagrantfile`
-and the default configuration:
+Here is a summary schema to better understand how this works:
 
-| Region | Datacenter  | Agent's mode | IP address    |
-|--------|-------------|--------------|---------------|
-| `us`   | `us-west-1` | *server*     | 192.168.60.10 |
-| `us`   | `us-west-1` | *client*     | 192.168.61.10 |
-| `us`   | `us-west-2` | *server*     | 192.168.60.20 |
-| `us`   | `us-west-2` | *client*     | 192.168.61.20 |
-| `us`   | `us-east-1` | *server*     | 192.168.60.30 |
-| `us`   | `us-east-1` | *client*     | 192.168.61.30 |
+![HashiBox](/images/hashibox-{theme}.png)
 
 ## Cloning the repository
 
 You can clone the repository with:
+
 ```bash
 $ git clone https://github.com/nunchistudio/hashibox
 ```
@@ -61,7 +53,8 @@ directory structure to better understand how it works:
 - `Vagrantfile`: This is the file to setup the required nodes using Vagrant.
   This also takes care of exposing the private network for each node with the IP
   addresses given earlier.
-- `Makefile`: This is mainly used to simplify the installation process.
+- `Makefile`: This file allows to populate environment variables and automate
+  every tasks within the environment.
 - `bolt.yaml`: Required file to leverage the Bolt command-line within this
   directory.
 - `inventory.yaml`: This file is used by Bolt and allows us to organize our nodes
@@ -79,7 +72,3 @@ directory structure to better understand how it works:
       the `us-west-2` datacenter only.
     - `us-east-1/`: This directory contains the specific configuration files for
       the `us-east-1` datacenter only.
-
----
-
-**Next:** [Installation](./installation.md)

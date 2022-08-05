@@ -1,8 +1,9 @@
 ---
-title: Vault initialization
+location: "/documentation/vault-init.md"
+title: "Vault initialization"
 ---
 
-# Vault initialization
+# {% $markdoc.frontmatter.title %}
 
 Once the Vagrant setup is done, you must initialize (and unseal Vault *servers*)
 in order for Nomad to work as expected.
@@ -10,20 +11,26 @@ in order for Nomad to work as expected.
 ## Initialize Vault
 
 If you go to <http://192.168.60.10:8200> you will see the Vault UI for the server
-node on the `eu-west-1` datacenter. For our demo, let's configure Vault simply
-with:
-![Vault initialization](../assets/vault-init-01.png)
+node on the `eu-west-1` datacenter. Let's configure Vault with `1` Key shares and
+`1` Key threshold:
+![Vault initialization](/screenshots/vault-init-01.png)
 
-Copy and paste in your notes the initial root token given as well as the key:
-![Vault initialization](../assets/vault-init-02.png)
+Copy the initial root token given as well as the key:
+![Vault initialization](/screenshots/vault-init-02.png)
+
+Paste them in `.env`:
+
+```bash
+export VAULT_TOKEN=<token>
+export VAULT_UNSEAL_KEY=<key>
+```
 
 ## Apply Vault token and key
 
 You can now restart the Consul, Nomad, and Vault services with the Vault token
 and unseal key:
+
 ```bash
-$ export VAULT_TOKEN=<token>
-$ export VAULT_UNSEAL_KEY=<key>
 $ make sync
 ```
 
@@ -37,15 +44,10 @@ Running `make sync`:
 
 In Consul, we can see that every health checks are now passing and the service list
 looks like this:
-![Consul Services](../assets/consul-services-01.png)
+![Consul Services](/screenshots/consul-services-01.png)
 
 Since Vault is heathly, Nomad can interact with it via the root token passed with
 `VAULT_TOKEN`. Let's take a look at Nomad:
-![Nomad Clients](../assets/nomad-clients-01.png)
-
----
+![Nomad Clients](/screenshots/nomad-clients-01.png)
 
 **Happy hacking!**
-
-**Going further:**
-- [Adding Waypoint](./documentation/waypoint.md)

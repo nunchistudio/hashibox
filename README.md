@@ -5,17 +5,19 @@ HashiBox is a local environment to simulate a highly-available cloud with
 [Vault](https://www.vaultproject.io/). OSS and Enterprise versions of each
 product are supported.
 
-[Waypoint](https://www.waypointproject.io/) can be added but is optional.
-
-It also installs [Docker](https://www.docker.com/) for running Nomad's jobs
-inside containers.
+[Waypoint](https://www.waypointproject.io/) can be added but is optional. It also
+installs [Docker](https://www.docker.com/) for running Nomad's jobs inside
+containers.
 
 It leverages [Vagrant](https://www.vagrantup.com/) for virtualization, and
 [Bolt](https://puppet.com/docs/bolt/) for maintenance automation across nodes.
 
-The main goal is to provide a local environment simulating a [HashiCorp Cloud
-Platform](https://cloud.hashicorp.com) setup as close as possible. This allows
-to test projects from end-to-end before going live.
+The main goal of HashiBox is to provide a local setup respecting environment
+parity for simulating a Cloud Platform from end-to-end before going in production.
+
+**Useful links:**
+- [Website](https://hashibox.sh)
+- [Get started](https://hashibox.sh/overview)
 
 **Vagrant providers supported:**
 - `parallels`
@@ -35,16 +37,13 @@ to test projects from end-to-end before going live.
   sharing with machines. Bolt is a better choice for *production-practices*
   but also for automating scripts across nodes.
 
-## Documentation
+## Summary schema
 
-**Getting started:**
-01. [Introduction](./documentation/introduction.md)
-02. [Installation](./documentation/installation.md)
-03. [Vault initialization](./documentation/vault-init.md)
-
-**Other documents:**
-- [Adding Waypoint](./documentation/waypoint.md)
-- [Maintenance cheatsheet](./documentation/maintenance.md)
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="/assets/hashibox-light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="/assets/hashibox-dark.png">
+  <img alt="How HashiBox works" src="/assets/hashibox-light.png">
+</picture>
 
 ## Screenshots
 

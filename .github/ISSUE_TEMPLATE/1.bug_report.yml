@@ -6,7 +6,7 @@ description: |
 body:
   - type: dropdown
     attributes:
-      label: What OS are you using?
+      label: What OS are you running?
       options:
         - Linux
         - macOS
@@ -15,7 +15,7 @@ body:
       required: true
   - type: dropdown
     attributes:
-      label: What architecture are you using?
+      label: What architecture are you running?
       options:
         - amd64
         - arm64
@@ -23,7 +23,7 @@ body:
       required: true
   - type: dropdown
     attributes:
-      label: What Vagrant provider are you using?
+      label: What Vagrant provider are you running?
       options:
         - parallels
         - virtualbox
