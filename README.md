@@ -40,9 +40,9 @@ parity for simulating a Cloud Platform from end-to-end before going in productio
 ## Summary schema
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="/assets/hashibox-light.png">
-  <source media="(prefers-color-scheme: dark)" srcset="/assets/hashibox-dark.png">
-  <img alt="How HashiBox works" src="/assets/hashibox-light.png">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/hashibox-light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/hashibox-dark.png">
+  <img alt="How HashiBox works" src="./assets/hashibox-light.png">
 </picture>
 
 ## Screenshots
@@ -51,42 +51,42 @@ parity for simulating a Cloud Platform from end-to-end before going in productio
   <summary>Consul</summary>
   <br>
 
-  ![Consul Services](./assets/consul-services-02.png)
+  ![Consul Services](./assets/screenshots/consul-services-02.png)
 
-  ![Consul Nodes](./assets/consul-nodes.png)
+  ![Consul Nodes](./assets/screenshots/consul-nodes.png)
 
-  ![Consul Key/Value](./assets/consul-kv.png)
+  ![Consul Key/Value](./assets/screenshots/consul-kv.png)
 </details>
 
 <details>
   <summary>Nomad</summary>
   <br>
 
-  ![Nomad Jobs](./assets/nomad-jobs.png)
+  ![Nomad Jobs](./assets/screenshots/nomad-jobs.png)
 
-  ![Nomad Servers](./assets/nomad-servers.png)
+  ![Nomad Servers](./assets/screenshots/nomad-servers.png)
 
-  ![Nomad Clients](./assets/nomad-clients-02.png)
+  ![Nomad Clients](./assets/screenshots/nomad-clients-02.png)
 
-  ![Nomad Topology](./assets/nomad-topology.png)
+  ![Nomad Topology](./assets/screenshots/nomad-topology.png)
 </details>
 
 <details>
   <summary>Vault</summary>
   <br>
 
-  ![Vault Secrets](./assets/vault-secrets.png)
+  ![Vault Secrets](./assets/screenshots/vault-secrets.png)
 
-  ![Vault Access](./assets/vault-access.png)
+  ![Vault Access](./assets/screenshots/vault-access.png)
 </details>
 
 <details>
   <summary>Waypoint</summary>
   <br>
 
-  ![Waypoint Authenticate](./assets/waypoint-auth.png)
+  ![Waypoint Authenticate](./assets/screenshots/waypoint-auth.png)
 
-  ![Waypoint Projects](./assets/waypoint-projects.png)
+  ![Waypoint Projects](./assets/screenshots/waypoint-projects.png)
 </details>
 
 ## License
