@@ -6,7 +6,7 @@
 source /hashibox/.env
 
 # Set Consul version.
-CONSUL_VERSION="1.12.0"
+CONSUL_VERSION="1.13.2"
 if [[ ! -z ${CONSUL_LICENSE} ]]; then
   CONSUL_VERSION+="+ent"
 fi
