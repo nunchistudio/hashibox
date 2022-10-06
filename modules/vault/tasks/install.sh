@@ -6,7 +6,7 @@
 source /hashibox/.env
 
 # Set Vault version.
-VAULT_VERSION="1.11.0"
+VAULT_VERSION="1.11.4"
 if [[ ! -z ${VAULT_LICENSE} ]]; then
   VAULT_VERSION+="+ent"
 fi
