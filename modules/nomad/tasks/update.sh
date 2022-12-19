@@ -7,7 +7,7 @@ source /hashibox/.env
 
 # Set Nomad version.
 CNI_PLUGINS_VERSION="1.0.1"
-NOMAD_VERSION="1.4.0"
+NOMAD_VERSION="1.4.3"
 if [[ ! -z ${NOMAD_LICENSE} ]]; then
   NOMAD_VERSION+="+ent"
 fi
