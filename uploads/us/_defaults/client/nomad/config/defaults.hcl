@@ -40,6 +40,10 @@ plugin "raw_exec" {
 plugin "docker" {
   config {
     allow_privileged = true
+
+    volumes {
+      enabled = true
+    }
   }
 }
 
