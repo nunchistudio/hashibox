@@ -9,4 +9,8 @@ listener "tcp" {
   tls_disable     = true
   address         = "192.168.60.10:8200"
   cluster_address = "192.168.60.10:8201"
+
+  telemetry {
+    unauthenticated_metrics_access = true
+  }
 }
