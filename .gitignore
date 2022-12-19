@@ -71,3 +71,12 @@ $RECYCLE.BIN/
 
 .rerun.json
 *.log
+
+
+############################################
+## Shared environments
+############################################
+
+.env
+.env.*
+!.env.example
