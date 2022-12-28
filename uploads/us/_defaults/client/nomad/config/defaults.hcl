@@ -17,9 +17,16 @@ client {
     ]
   }
 
-  host_volume "waypoint" {
-    path      = "/opt/waypoint"
-    read_only = false
+  host_volume {
+    waypoint-server {
+      path      = "/opt/waypoint/server"
+      read_only = false
+    }
+
+    waypoint-runner {
+      path      = "/opt/waypoint/runner"
+      read_only = false
+    }
   }
 }
 

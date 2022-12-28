@@ -25,9 +25,8 @@ $ brew install hashicorp/tap/waypoint
 Since we already have a running Nomad cluster, adding Waypoint to HashiBox is
 pretty straightforward.
 
-By running the following command, you install a Waypoint *server* and *runner*
-on the Nomad client in the `us-west-1` datacenter, and also register Waypoint
-services in Consul:
+By running the following command, you install a Waypoint *server* on the Nomad
+client in the `us-west-1` datacenter, and register related services in Consul:
 
 ```bash
 $ export NOMAD_ADDR=http://192.168.60.10:4646
@@ -38,10 +37,12 @@ $ waypoint install -accept-tos -platform=nomad \
   -nomad-consul-service=true \
   -nomad-consul-service-hostname=192.168.61.10 \
   -nomad-consul-datacenter=us \
-  -nomad-host-volume=waypoint
+  -nomad-host-volume=waypoint-server \
+  -nomad-runner-host-volume=waypoint-runner
 ```
 
-No need to manually create the Nomad host volume `waypoint`. It has already been
-created by Nomad clients via the configuration files.
+No need to manually create the Nomad host volumes `waypoint-server` and
+`waypoint-runner`. They already have been created by Nomad clients via the
+configuration files.
 
 Once done, the Waypoint UI is available at <https://192.168.61.10:9702>.
