@@ -1,5 +1,7 @@
 data_dir = "/opt/consul"
 
+datacenter = "us"
+
 ui_config {
   enabled = true
 }
