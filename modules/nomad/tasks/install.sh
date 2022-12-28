@@ -21,7 +21,6 @@ case $(uname -m) in
 esac
 
 # Download and unzip Nomad.
-echo "==> Downloading Nomad v${NOMAD_VERSION}..."
 curl -sSL https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_${OS_KIND}_${OS_ARCH}.zip > /tmp/nomad.zip
 sudo unzip /tmp/nomad.zip -d /tmp/
 
@@ -29,7 +28,6 @@ sudo unzip /tmp/nomad.zip -d /tmp/
 curl -sSL https://github.com/containernetworking/plugins/releases/download/v${CNI_PLUGINS_VERSION}/cni-plugins-${OS_KIND}-${OS_ARCH}-v${CNI_PLUGINS_VERSION}.tgz > /tmp/cni-plugins.tgz
 
 # Install Nomad and remove temporary archive.
-echo "==> Installing Nomad v${NOMAD_VERSION}..."
 sudo install /tmp/nomad /usr/local/bin/nomad
 sudo rm /tmp/nomad /tmp/nomad.zip
 
@@ -61,6 +59,3 @@ sudo cp /hashibox/defaults/nomad/nomad.service /etc/systemd/system/nomad.service
 # Create the data directory used for Waypoint and Nomad's plugins.
 sudo mkdir -p /opt/waypoint
 sudo mkdir -p /opt/nomad/plugins
-
-# If we made it here, we're done!
-echo "==> Successfully installed Nomad"

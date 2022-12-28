@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Make sure to include required environment variables.
+source .env
+
 # List all environment variables that can be populated in `/hashibox/.env` inside
 # each machine. This file is used as `EnvironmentFile` by each service.
 ENV_VARS=(

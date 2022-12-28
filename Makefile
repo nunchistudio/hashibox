@@ -1,4 +1,4 @@
-.PHONY: init up halt restart destroy sync update unseal ssh
+.PHONY: init up halt restart destroy sync update ssh
 
 export VAGRANT_PROVIDER ?= "virtualbox"
 export UBUNTU_VERSION ?= 20.04
@@ -24,16 +24,11 @@ init:
 	./scripts/install.sh
 
 #
-# up is a shortcut to start the Vagrant environment. It also applies some
-# environment variables, then restarts the Consul, Nomad, and Vault services and
-# finally unseal Vault on every server nodes.
+# up is a shortcut to start the Vagrant environment. If you made some changes in
+# `.env` or configuration file, you'll need to execute `make sync` after.
 #
 up:
 	vagrant up --provider=${VAGRANT_PROVIDER} --parallel
-	./scripts/dotenv.sh
-	./scripts/restart.sh
-	sleep 5
-	./scripts/unseal.sh
 
 #
 # halt is a shortcut to stop the Vagrant environment.
@@ -50,7 +45,7 @@ restart: halt up
 # destroy is a shortcut to stop and force destroy the Vagrant environment.
 #
 destroy: halt
-	vagrant destroy -f
+	vagrant destroy -f --parallel
 
 #
 # sync is a shortcut to synchronize the local `uploads` directory with the
@@ -72,12 +67,6 @@ sync:
 update:
 	./scripts/update.sh
 	sleep 5
-	./scripts/unseal.sh
-
-#
-# unseal is a shortcut to unseal the Vault servers given a single unseal key.
-#
-unseal:
 	./scripts/unseal.sh
 
 #

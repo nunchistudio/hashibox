@@ -10,7 +10,4 @@ plan client::update (TargetSpec $targets) {
 
   # Restart `systemctl` so we can start the agents.
   run_task('client::reload', $targets)
-
-  # So far so good.
-  return run_command('echo "==> Update successfully completed!"', $targets)
 }

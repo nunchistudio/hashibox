@@ -12,7 +12,6 @@ case $(uname -m) in
 esac
 
 # Remove previous Docker-related packages.
-echo "==> Removing old Docker-related packages...."
 sudo apt-get remove \
   docker \
   docker-engine \
@@ -33,7 +32,6 @@ sudo add-apt-repository \
   ${DOCKER_VERSION}"
 
 # Install the latest version of Docker Engine - Community and containerd.
-echo "==> Installing ${DOCKER_VERSION} version of Docker...."
 sudo apt-get install -y \
   docker-ce \
   docker-ce-cli \
@@ -45,6 +43,3 @@ sudo service docker stop
 
 # Make sure we can actually use Docker as the current user.
 sudo usermod -aG docker $USER
-
-# If we made it here, we're done!
-echo "==> Successfully installed Docker"
