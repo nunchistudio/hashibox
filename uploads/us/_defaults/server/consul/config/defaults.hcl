@@ -18,9 +18,15 @@ retry_join = [
 ]
 
 acl {
-  enabled                  = false
-  default_policy           = "allow"
+  enabled        = true
+  default_policy = "deny"
+  down_policy    = "deny"
+
   enable_token_persistence = true
+
+  tokens {
+    default = "<TO_OVERRIDE>"
+  }
 }
 
 connect {

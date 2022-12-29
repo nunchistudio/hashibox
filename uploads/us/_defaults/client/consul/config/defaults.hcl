@@ -19,3 +19,15 @@ retry_join = [
 service {
   name = "consul-client"
 }
+
+acl {
+  enabled        = true
+  default_policy = "deny"
+  down_policy    = "deny"
+
+  enable_token_persistence = true
+
+  tokens {
+    default = "<TO_OVERRIDE>"
+  }
+}

@@ -20,8 +20,10 @@ Once HashiBox has been initialized, we assume the following required environment
 variables are set on your machine:
 
 ```bash
-export VAULT_TOKEN=<token>
 export VAULT_UNSEAL_KEY=<key>
+export VAULT_TOKEN=<token>
+export CONSUL_HTTP_TOKEN=<token>
+export NOMAD_TOKEN=<token>
 ```
 
 Optional environment variables for tweaking Vagrant:
@@ -123,7 +125,7 @@ This:
 1. uploads the config files from your local machine to your virtual machines for
    *server* and *client* nodes;
 2. updates the environment variables of your virtual machines using the ones from
-   your local machine;
+   the local `.env` file;
 3. restarts the Consul, Nomad, and Vault services on every nodes;
 4. unseals Vault on *server* nodes.
 

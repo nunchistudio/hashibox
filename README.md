@@ -29,8 +29,10 @@ parity for simulating a Cloud Platform from end-to-end before going in productio
 - `arm64`
 
 **Notes about the environment:**
-- To simplify the setup, ACL and TLS across Consul, Nomad, Vault, and Waypoint
-  are not configured. Feel free to make a pull request to support it.
+- ACLs are enabled and automatically bootstrapped in Consul and Nomad. To simplify
+  the setup, the bootstrapped tokens are used in favor of scope-defined ones.
+- To simplify the setup, TLS across Consul, Nomad, Vault, and Waypoint is not
+  configured.
 - Only Vault *server* is leveraged. Vault agents in *client* mode are not setup
   since we don't use it. Feel free to make a pull request to support it.
 - We could have leveraged Vagrant's *sync folders* instead of Bolt for file
@@ -51,11 +53,13 @@ parity for simulating a Cloud Platform from end-to-end before going in productio
   <summary>Consul</summary>
   <br>
 
-  ![Consul Services](./assets/screenshots/consul-services-02.png)
+  ![Consul Services](./assets/screenshots/consul-services.png)
 
   ![Consul Nodes](./assets/screenshots/consul-nodes.png)
 
-  ![Consul Key/Value](./assets/screenshots/consul-kv.png)
+  ![Consul Tokens](./assets/screenshots/consul-tokens.png)
+  
+  ![Consul Policies](./assets/screenshots/consul-policies.png)
 </details>
 
 <details>
@@ -64,10 +68,12 @@ parity for simulating a Cloud Platform from end-to-end before going in productio
 
   ![Nomad Jobs](./assets/screenshots/nomad-jobs.png)
 
+  ![Nomad Clients](./assets/screenshots/nomad-clients.png)
+
   ![Nomad Servers](./assets/screenshots/nomad-servers.png)
 
-  ![Nomad Clients](./assets/screenshots/nomad-clients-02.png)
-
+  ![Nomad Tokens](./assets/screenshots/nomad-tokens.png)
+  
   ![Nomad Topology](./assets/screenshots/nomad-topology.png)
 </details>
 

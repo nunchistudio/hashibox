@@ -9,20 +9,21 @@ title: "Installation"
 
 As introduced earlier, this setup leverages [Vagrant](https://www.vagrantup.com/)
 for virtualization, and [Bolt](https://puppet.com/docs/bolt/) for maintenance
-automation across nodes.
+automation across nodes. Some other tools are also used during the initialization
+process.
 
-You first need to install these tools before continuing.
+You need to install these dependencies on your machine before continuing.
 
 **TLDR:** For macOS with [Homebrew](https://brew.sh/):
 
 ```bash
-$ brew install homebrew/cask/vagrant
-$ brew install puppetlabs/puppet/puppet-bolt
+$ brew install jq \
+  homebrew/cask/vagrant \
+  hashicorp/tap/consul \
+  hashicorp/tap/nomad \
+  hashicorp/tap/vault \
+  puppetlabs/puppet/puppet-bolt
 ```
-
-Other tools such as Consul, Nomad, Vault, and Docker are not required on your
-local machine. They are only needed on remote nodes. They will automatically be
-installed and configured in the virtual machines.
 
 ## Environment variables
 
@@ -73,24 +74,40 @@ Consul, Nomad, and Vault Enterprise are supported as well:
 We now assume you run all commands with the desired environment variables
 exported.
 
-The `init` entry of the `Makefile` creates the virtual machines, initializes the
-environment, and starts the services, automating the whole process. You can run
-it with:
+The `init` entry of the `Makefile`:
+1. creates the virtual machines;
+2. initializes the environment;
+3. bootstraps ACLs on Consul and Nomad;
+4. starts the services;
+5. unseals Vault;
+6. configures Consul and Nomad secret engines in Vault.
+
+This automates the whole process. You can run it with:
 
 ```bash
 $ make init
 ```
 
+{% callout level="warning" iconType="clock" title="Warning" %}
+  This process can take up to 10 - 20 minutes, depending on allocated resources
+  and your internet connection.
+{% /callout %}
+
 We don't detail every steps to keep this guide as light as possible. Take a look
 at the `Makefile` and `scripts` directory if you wish to better understand how
 it works.
 
-## Verify installation
+When done, your `.env` file will be populated with the following environment
+variables:
 
-Vault is not yet initialized. Therefore, Vault health checks don't pass and Nomad
-can't properly run since it's configured to integrate with Vault. If we take a
-look at the Consul UI, this should look like this:
-![Consul Services](/screenshots/consul-init.png)
+```bash
+export VAULT_UNSEAL_KEY=<key>
+export VAULT_TOKEN=<token>
+export CONSUL_HTTP_TOKEN=<token>
+export NOMAD_TOKEN=<token>
+```
+
+## Verify installation
 
 Given the summary schema in the introduction, here is some information with the
 appropriate links for each node:
@@ -146,7 +163,4 @@ appropriate links for each node:
 * *n/a*
 {% /table %}
 
-{% callout level="warning" iconType="securitySignalDetected" title="Vault initialization" %}
-As stated, Nomad currently can't properly run. The links related to Nomad will not
-work until [Vault has been initialized](/vault-init).
-{% /callout %}
+**Happy hacking!**

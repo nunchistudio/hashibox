@@ -60,15 +60,13 @@ directory structure to better understand how it works:
 - `inventory.yaml`: This file is used by Bolt and allows us to organize our nodes
   per groups so we can then run tasks on different groups of nodes such as every
   nodes acting as `clients`, or every nodes in the `us-west-1` datacenter.
+- `scripts/`: This contains the automation scripts used in the `Makefile`, executed
+  on your local machine.
 - `modules/`: This contains Bolt tasks and plans to execute on the remote nodes.
-- `uploads/`: This directory is used to upload files for each node, in each
+- `uploads/`: This directory contains the files uploaded on each node, in each
   datacenter, for each region.
   - `us/`: Applied for the `us` region.
     - `_defaults/`: This directory contains the default configuration files that
       will be applied to all nodes present in the `us` region.
-    - `us-west-1/`: This directory contains the specific configuration files for
-      the `us-west-1` datacenter only.
-    - `us-west-2/`: This directory contains the specific configuration files for
-      the `us-west-2` datacenter only.
-    - `us-east-1/`: This directory contains the specific configuration files for
-      the `us-east-1` datacenter only.
+    - `<datacenter>/`: Each directory contains the specific configuration files
+      of the datacenter.
