@@ -40,10 +40,13 @@ init:
 
 #
 # up is a shortcut to start the Vagrant environment. If you made some changes in
-# `.env` or configuration file, you'll need to execute `make sync` after.
+# `.env` or configuration files, you'll need to execute `make sync` after.
 #
 up:
 	vagrant up --provider=${VAGRANT_PROVIDER} --parallel
+	./scripts/restart.sh
+	sleep 5
+	./scripts/unseal.sh
 
 #
 # halt is a shortcut to stop the Vagrant environment.
