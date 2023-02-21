@@ -17,6 +17,12 @@ client {
   enabled = false
 }
 
+ports {
+  http = 4646
+  rpc  = 4647
+  serf = 4648
+}
+
 telemetry {
   collection_interval        = "1s"
   disable_hostname           = true

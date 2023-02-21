@@ -80,3 +80,10 @@ $RECYCLE.BIN/
 .env
 .env.*
 !.env.example
+
+
+############################################
+## Temporary files
+############################################
+
+./scripts/init/.assets

@@ -17,10 +17,11 @@ export VAULT_UNSEAL_KEY ?= "INSERT-VAULT-UNSEAL-KEY"
 # Apply the environment variables before installing so we know if we need OSS
 # or Enterprise version for Consul, Nomad, and Vault. We need to apply them after
 # installation as well since `.env` is now populated with Vault unseal key and
-# root token. We then can unseal Vault, bootstrap ACLs on Consul and Nomad, and
-# finally sync files with the result of the bootstrap process. Last step is to
-# create the Consul and Nomad secret engines on Vault. We wait 45 seconds before
-# doing this step to ensure a Vault node is "active".
+# root token. We then can unseal Vault, bootstrap ACLs on Consul and Nomad,
+# initialize Vault as CA provider for Consul Connect, and finally sync files with
+# the result of the bootstrap process. Last step is to create the Consul and Nomad
+# secret engines on Vault. We wait 45 seconds before doing this step to ensure a
+# Vault node is "active".
 #
 init:
 	vagrant up --provider=${VAGRANT_PROVIDER} --parallel
@@ -36,6 +37,7 @@ init:
 	./scripts/init/nomad-bootstrap.sh
 	make sync
 	sleep 45
+	./scripts/init/consul-ca.sh
 	./scripts/init/vault-engines.sh
 
 #

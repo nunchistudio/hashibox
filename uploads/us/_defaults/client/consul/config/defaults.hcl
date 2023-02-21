@@ -10,6 +10,12 @@ enable_local_script_checks = true
 
 server = false
 
+ports {
+  http = 8500
+  grpc = 8502
+  dns  = 8600
+}
+
 retry_join = [
   "192.168.60.10",
   "192.168.60.20",
@@ -28,6 +34,10 @@ acl {
   enable_token_persistence = true
 
   tokens {
-    default = "<TO_OVERRIDE>"
+    default = "<CONSUL_TOKEN_TO_OVERRIDE>"
   }
+}
+
+connect {
+  enabled = true
 }
