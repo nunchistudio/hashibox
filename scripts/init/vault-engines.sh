@@ -12,7 +12,7 @@ activeNode=$(jq -r '[.Nodes[] | select(.active_node == true).api_address][0]' <<
   VAULT_TOKEN=${VAULT_TOKEN} VAULT_ADDR=${activeNode} vault secrets enable consul
   VAULT_TOKEN=${VAULT_TOKEN} VAULT_ADDR=${activeNode} vault write consul/config/access \
     address=192.168.60.10:8500 \
-    token=${CONSUL_TOKEN}
+    token=${CONSUL_HTTP_TOKEN}
 } &> /dev/null
 
 # Enable and configure the Nomad secret engine using the active node address.
