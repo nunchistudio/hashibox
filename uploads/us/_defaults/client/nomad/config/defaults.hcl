@@ -54,6 +54,13 @@ plugin "docker" {
   config {
     allow_privileged = true
 
+    extra_labels = [
+      "job_id", "job_name",
+      "node_id", "node_name",
+      "namespace",
+      "task_group_name", "task_name",
+    ]
+
     volumes {
       enabled = true
     }
