@@ -8,7 +8,6 @@ types:
   - "fix"
   - "refactor"
   - "revert"
-  - "sponsors"
   - "version"
 
 scopes:

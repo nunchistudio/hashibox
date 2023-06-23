@@ -1,5 +1,5 @@
 ---
-location: "/documentation/overview.md"
+location: "/documentation/index.md"
 title: "Overview"
 ---
 
@@ -35,7 +35,7 @@ In each datacenter we install 2 nodes:
 
 Here is a summary schema to better understand how this works:
 
-![HashiBox](/images/hashibox-{theme}.png)
+![HashiBox](/hashibox/hashibox-{theme}.png)
 
 ## Cloning the repository
 

@@ -1,4 +1,4 @@
-# Contributing to HashiBox
+# Contributing to `hashibox`
 
 We are incredibly thankful for the contributions we can receive from the community.
 

@@ -16,8 +16,7 @@ The main goal of HashiBox is to provide a local setup respecting environment
 parity for simulating a Cloud Platform from end-to-end before going in production.
 
 **Useful links:**
-- [Website](https://hashibox.sh)
-- [Get started](https://hashibox.sh/overview)
+- [Get started](https://nunchi.studio/hashibox)
 
 **Vagrant providers supported:**
 - `parallels`
@@ -97,4 +96,4 @@ parity for simulating a Cloud Platform from end-to-end before going in productio
 
 ## License
 
-Repository licensed under the [Mozilla Public License, version 2.0](./LICENSE).
+Repository licensed under the [MIT License](./LICENSE.md).
