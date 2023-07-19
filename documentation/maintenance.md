@@ -29,7 +29,7 @@ export NOMAD_TOKEN=<token>
 Optional environment variables for tweaking Vagrant:
 
 ```bash
-export UBUNTU_VERSION=20.04-arm64
+export UBUNTU_VERSION=23.04-arm64
 export VAGRANT_PROVIDER=parallels
 export VAGRANT_CLIENT_RAM=2048
 export VAGRANT_CLIENT_CPUS=1

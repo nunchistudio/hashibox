@@ -35,7 +35,7 @@ to `export` each of them, like this:
 
 ```bash
 export VAGRANT_PROVIDER=parallels
-export UBUNTU_VERSION=20.04-arm64
+export UBUNTU_VERSION=23.04-arm64
 export VAGRANT_CLIENT_RAM=2048
 export VAGRANT_SERVER_RAM=1024
 export NOMAD_LICENSE=licensekey
@@ -48,8 +48,8 @@ HashiBox supports multiple architectures and Vagrant providers.
 Supported environment variables are:
 - `VAGRANT_PROVIDER`: Set the Vagrant provider. Supports `virtualbox`,
   `vmware_desktop`, `parallels`. Default is `virtualbox`.
-- `UBUNTU_VERSION`: Set the Ubuntu version. Supports `20.04` (for AMD64),
-  `20.04-arm64` (for ARM64). Default is `20.04`.
+- `UBUNTU_VERSION`: Set the Ubuntu version. Supports `23.04` (for AMD64),
+  `23.04-arm64` (for ARM64). Default is `23.04`.
 
 The Vagrant environment uses a lot of resources. By default it uses 1Go RAM per
 *client* nodes (x3) and 512Mo RAM per *server* nodes (x3). You can change these

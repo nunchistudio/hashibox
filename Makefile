@@ -1,7 +1,7 @@
 .PHONY: init up halt restart destroy sync update ssh
 
 export VAGRANT_PROVIDER ?= "virtualbox"
-export UBUNTU_VERSION ?= 20.04
+export UBUNTU_VERSION ?= 23.04
 
 export VAGRANT_CLIENT_RAM ?= 1024
 export VAGRANT_CLIENT_CPUS ?= 1
