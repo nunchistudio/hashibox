@@ -16,18 +16,6 @@ client {
       "192.168.60.30"
     ]
   }
-
-  host_volume {
-    waypoint-server {
-      path      = "/opt/waypoint/server"
-      read_only = false
-    }
-
-    waypoint-runner {
-      path      = "/opt/waypoint/runner"
-      read_only = false
-    }
-  }
 }
 
 ports {

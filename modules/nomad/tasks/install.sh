@@ -56,7 +56,5 @@ EOF
 # Add the appropriate Nomad systemd service.
 sudo cp /hashibox/defaults/nomad/nomad.service /etc/systemd/system/nomad.service
 
-# Create the data directories used for Waypoint and Nomad's plugins.
-sudo mkdir -p /opt/waypoint/server
-sudo mkdir -p /opt/waypoint/runner
+# Create the data directories used for Nomad's plugins.
 sudo mkdir -p /opt/nomad/plugins

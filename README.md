@@ -5,8 +5,7 @@ HashiBox is a local environment to simulate a highly-available cloud with
 [Vault](https://www.vaultproject.io/). OSS and Enterprise versions of each
 product are supported. Consul Connect is enabled and uses Vault as CA provider.
 
-[Waypoint](https://www.waypointproject.io/) can be added but is optional. It also
-installs [Docker](https://www.docker.com/) for running Nomad's jobs inside
+It also installs [Docker](https://www.docker.com/) for running Nomad's jobs inside
 containers.
 
 It leverages [Vagrant](https://www.vagrantup.com/) for virtualization, and
@@ -30,8 +29,7 @@ parity for simulating a Cloud Platform from end-to-end before going in productio
 **Notes about the environment:**
 - ACLs are enabled and automatically bootstrapped in Consul and Nomad. To simplify
   the setup, the bootstrapped tokens are used in favor of scope-defined ones.
-- To simplify the setup, TLS across Consul, Nomad, Vault, and Waypoint is not
-  configured.
+- To simplify the setup, TLS across Consul, Nomad, and Vault is not configured.
 - Only Vault *server* is leveraged. Vault agents in *client* mode are not setup
   since we don't use it. Feel free to make a pull request to support it.
 - We could have leveraged Vagrant's *sync folders* instead of Bolt for file
@@ -83,15 +81,6 @@ parity for simulating a Cloud Platform from end-to-end before going in productio
   ![Vault Secrets](./assets/screenshots/vault-secrets.png)
 
   ![Vault Access](./assets/screenshots/vault-access.png)
-</details>
-
-<details>
-  <summary>Waypoint</summary>
-  <br>
-
-  ![Waypoint Authenticate](./assets/screenshots/waypoint-auth.png)
-
-  ![Waypoint Projects](./assets/screenshots/waypoint-projects.png)
 </details>
 
 ## License

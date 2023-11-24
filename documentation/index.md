@@ -10,8 +10,7 @@ HashiBox is a local environment to simulate a highly-available cloud with
 [Vault](https://www.vaultproject.io/). OSS and Enterprise versions of each
 product are supported. Consul Connect is enabled and uses Vault as CA provider.
 
-[Waypoint](https://www.waypointproject.io/) can be added but is optional. It also
-installs [Docker](https://www.docker.com/) for running Nomad's jobs inside
+It also installs [Docker](https://www.docker.com/) for running Nomad's jobs inside
 containers.
 
 It leverages [Vagrant](https://www.vagrantup.com/) for virtualization, and
