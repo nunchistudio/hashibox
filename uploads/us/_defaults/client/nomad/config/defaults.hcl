@@ -1,7 +1,17 @@
 data_dir = "/opt/nomad"
 
+region = "us"
+
+bind_addr = "{{ GetInterfaceIP \"eth1\" }}"
+
 server {
   enabled = false
+}
+
+ports {
+  http = 4646
+  rpc  = 4647
+  serf = 4648
 }
 
 client {
@@ -16,12 +26,6 @@ client {
       "192.168.60.30"
     ]
   }
-}
-
-ports {
-  http = 4646
-  rpc  = 4647
-  serf = 4648
 }
 
 telemetry {
@@ -56,6 +60,7 @@ plugin "docker" {
 }
 
 consul {
+  address             = "{{ GetInterfaceIP \"eth1\" }}:8500"
   server_service_name = "nomad"
   client_service_name = "nomad-client"
   auto_advertise      = true

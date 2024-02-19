@@ -1,11 +1,4 @@
-region     = "us"
 datacenter = "us-west-2"
-
-bind_addr = "192.168.61.20"
-
-consul {
-  address = "192.168.61.20:8500"
-}
 
 vault {
   enabled = true

@@ -11,6 +11,10 @@ enable_local_script_checks = true
 
 server = true
 
+client_addr        = "{{ GetInterfaceIP \"eth1\" }}"
+advertise_addr     = "{{ GetInterfaceIP \"eth1\" }}"
+advertise_addr_wan = "{{ GetInterfaceIP \"eth1\" }}"
+
 ports {
   http = 8500
   grpc = 8502
